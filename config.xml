@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget xmlns:gap="http://phonegap.com/ns/1.0" 
+		id="com.designge.mltaxi" 
+		package="com.designge.mltaxi"
+        version="1.3.1"
+        versionCode="45" 
+		xmlns="http://www.w3.org/ns/widgets"
+		xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>ML Taxi</name>
+    <icon src="www/resources/taxi.png"/>
+	<icon src="www/resources/taxi_1024.jpg" width="1024" height="1024" />
+
+	
+
+	<platform name="android">
+        <preference name="android-minSdkVersion" value="18"/>
+        <allow-intent href="market:*"/>
+		<config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-feature android:name="android.hardware.location.gps" />
+		</config-file>
+    </platform>
+
+
+    <access origin="*"/>
+    <allow-intent href="*"/>
+    <allow-navigation href="*"/>
+
+	<platform name="ios">
+		<icon gap:platform="ios" src="www/resources/taxi_1024.png" width="1024" height="1024" />
+		<icon gap:platform="ios" width="40" height="40" src="www/resources/icon-40.png"  />
+		<icon gap:platform="ios" width="80" height="80" src="www/resources/icon-40-2x.png"  />
+		<icon gap:platform="ios" width="57" height="57" src="www/resources/icon_57.png"  />
+		<icon gap:platform="ios" width="72" height="72" src="www/resources/icon_72.png"  />
+		<icon gap:platform="ios" width="114" height="114" src="www/resources/icon-57-2x.png" />
+		<icon gap:platform="ios" width="144" height="144" src="www/resources/icon-72-2x.png"  />
+		<icon gap:platform="ios" width="120" height="120" src="www/resources/icon_120.png"  />
+
+        <allow-intent href="itms:mltaxi.ge"/>
+        <allow-intent href="itms-apps:mltaxi.ge"/>
+		<gap:config-file platform="ios" parent="com.apple.developer.associated-domains" mode="replace">
+			<array>
+				<string>applinks:mltaxi.ge</string>
+			</array>
+		</gap:config-file> 
+
+		  <config-file target="*-Debug.plist" parent="com.apple.developer.associated-domains">
+      <array>
+        <string>applinks:mltaxi.ge</string>
+      </array>
+    </config-file>
+
+		<config-file target="*-Release.plist" parent="com.apple.developer.associated-domains">
+		  <array>
+			<string>applinks:mltaxi.ge</string>
+		  </array>
+		</config-file>
+
+			<config-file platform="ios" target="Entitlements-*.plist" parent="com.apple.developer.associated-domains" mode="replace">
+
+			 <array>  
+
+				  <string>applinks:mltaxi.ge</string>
+
+			 </array>
+
+		</config-file>
+
+		<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+			<string>need location access to find things nearby</string>
+		</edit-config>
+    </platform>
+
+
+
+	
+
+    <preference name="target-device" value="handset"/>
+   <preference name="phonegap-version" value="cli-8.0.0"/>
+<!--<preference name="phonegap-version" value="cli-7.0.1"/>-->
+
+    <preference name="orientation" value="portrait"/>
+    <preference name="webviewbounce" value="false"/>
+    <preference name="DisallowOverscroll" value="true"/>
+    <preference name="fullscreen" value="true"/>
+    <preference name="keepRunning" value="true"/>
+    <preference name="exit-on-suspend" value="false"/>
+	<preference name="Orientation" value="portrait"/>
+	<preference name="permissions" value="none"/>
+    <description>
+        ML Taxi
+    </description>
+    <author email="uabashidze@gmail.com" href="http://design.ge">
+        Cyborg-Mcloud
+    </author>
+    <plugins>
+    </plugins>
+    <feature name="http://api.phonegap.com/1.0/device"/>
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+    <feature name="http://api.phonegap.com/1.0/network"/>
+    <feature name="http://api.phonegap.com/1.0/notification"/>
+    <engine name="android" spec="latest" />
+	<feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification"/>
+        <param name="ios-package" value="CDVNotification"/>
+    </feature>
+<feature name="Geolocation">
+    <param name="ios-package" value="CDVLocation" />
+</feature>
+	<feature name="App">
+        <param name="android-package" value="com.designge.mltaxi"/>
+    </feature>
+		<gap:plugin name="cordova-plugin-fullscreen" source="npm" />
+    <gap:plugin name="cordova-plugin-request-location-accuracy" source="npm" />
+	<gap:plugin name="cordova-plugin-whitelist" source="npm"/>
+    <gap:plugin name="cordova-plugin-powermanagement" source="npm"/>
+    <gap:plugin name="cordova-plugin-geolocation" source="npm"/>
+    <gap:plugin name="cordova-plugin-file" source="npm"/>
+    <gap:plugin name="cordova-plugin-network-information" source="npm"/>
+	<gap:plugin name="phonegap-plugin-local-notification"  source="npm"/>
+	<gap:plugin name="call-number"  source="npm"/>
+<plugin name="cordova-plugin-vibration"  />
+	
+   <gap:plugin name="de.appplant.cordova.plugin.local-notification" source="npm" version="0.8.4"/>
+
+
+
+    <engine name="ios" spec="^4.5.4"/> 
+   <!-- <engine name="browser" spec="~5.0.1"/>
+
+    <engine name="android" spec="^6.4.0"/>-->
+<plugin name="cordova.plugins.diagnostic" source="npm" />
+
+	<plugin name="cordova-plugin-globalization" source="npm" />
+	<plugin name="cordova-plugin-dialogs" spec="^1.3.4"/>
+
+	<plugin name="cordova-android-support-gradle-release" spec="^1.1.1">
+    <variable name="ANDROID_SUPPORT_VERSION" value="26.0.1" />
+</plugin>
+
+
+</widget>
