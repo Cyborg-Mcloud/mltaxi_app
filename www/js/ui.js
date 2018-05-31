@@ -1,3 +1,15 @@
+var call_class=1;
+
+function sel_class(class_sel)
+	{
+	call_class=class_sel;
+	for (i=1;i<=3 ;i++ )
+		{
+		document.getElementById("selc_div"+i).style.borderColor="white";
+		}
+	document.getElementById("selc_div"+call_class).style.borderColor="orange";
+	}
+
 
 function sel_green()
 {
