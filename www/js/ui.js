@@ -50,7 +50,7 @@ function chat_click() {
 function chat_send() {
     chat_txt = document.getElementById("chat_send_text").value;
     document.getElementById("chat_send_text").value = "";
-    url = "http://taxiprius.com.ge/chat.php?send=1&myid=" + myid + "&chat_txt=" + chat_txt;
+    url = "http://mltaxi.ge/chat.php?send=1&myid=" + myid + "&chat_txt=" + chat_txt;
     console.log("send chat: " + url);
     gamehttp.open('GET', url, true);
     gamehttp.send(null);
@@ -132,7 +132,7 @@ function change_status(newstat) {
 
 function cancel_call()
 {
-url = "http://taxiprius.com.ge/user_cancel.php?unique=" + myid;
+url = "http://mltaxi.ge/user_cancel.php?unique=" + myid;
 console.log("taxi cancel: " + url);
 gamehttp.open('GET', url, true);
 gamehttp.send(null);
@@ -141,10 +141,10 @@ gamehttp.send(null);
 
 function chamovdivar() {
     if (MyUser != "nouser" && MyUser != "") {
-        url = "http://taxiprius.com.ge/chamovdivar.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + MyLat + "&long=" + MyLong + "&unique=" + myid;
+        url = "http://mltaxi.ge/chamovdivar.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + MyLat + "&long=" + MyLong + "&unique=" + myid;
     }
     else {
-        url = "http://taxiprius.com.ge/chamovdivar.php?lat=" + MyLat + "&long=" + MyLong + "&unique=" + myid;
+        url = "http://mltaxi.ge/chamovdivar.php?lat=" + MyLat + "&long=" + MyLong + "&unique=" + myid;
     }
     console.log("taxi chamovdivar: " + url);
     gamehttp.open('GET', url, true);
@@ -172,7 +172,7 @@ function cignorewifi() {
 var win;
 function open_reg_window()
 {
-win=window.open('http://taxiprius.com.ge/user_reg.php',  '_blank', 'location=yes');
+win=window.open('http://mltaxi.ge/user_reg.php',  '_blank', 'location=yes');
 
 }
 
@@ -342,7 +342,7 @@ function saveuser()
 
 function login_to_server()
 	{
-	url = "http://taxiprius.com.ge/login.php?login=1&unique=" + myid + "&myuser=" + MyUser + "&mypass=" + MyPass;
+	url = "http://mltaxi.ge/login.php?login=1&unique=" + myid + "&myuser=" + MyUser + "&mypass=" + MyPass;
     console.log("login: " + url);
     gamehttp.open('GET', url, true);
     gamehttp.send(null);
@@ -441,10 +441,10 @@ function call_taxi() {
 			end_lng=endMarker.getPosition().lng();
 			}
         if (MyUser !== "nouser" && MyUser !== "") {
-            url = "http://taxiprius.com.ge/call.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str;
+            url = "http://mltaxi.ge/call.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str;
         }
         else {
-            url = "http://taxiprius.com.ge/call.php?lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str;
+            url = "http://mltaxi.ge/call.php?lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str;
         }
         callingtaxi = 1;
         console.log("taxi call: " + url);
@@ -490,7 +490,7 @@ function onCallError(result) {
 
 function card_pay()
 	{
-	window.open('http://taxiprius.com.ge/bank_req.php?tanxa='+tanxa+"&unid="+myid, '_blank', 'location=yes');
+	window.open('http://mltaxi.ge/bank_req.php?tanxa='+tanxa+"&unid="+myid, '_blank', 'location=yes');
 	}
 
 function close_end_info()

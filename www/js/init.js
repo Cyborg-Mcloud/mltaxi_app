@@ -504,7 +504,7 @@ function check_chat(chatid)
 	{
     if (chatid != last_chat) {
         last_chat = chatid;
-        url = "http://taxiprius.com.ge/chat.php?req=1&myid=" + myid;
+        url = "http://mltaxi.ge/chat.php?req=1&myid=" + myid;
 
         console.log("request chat: " + url);
         gamehttp.open('GET', url, true);
@@ -524,11 +524,11 @@ function UpData()
 		{
         if (MyUser != "nouser" && MyUser != "") 
 			{
-            url = "http://taxiprius.com.ge/upload.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + MyLat + "&long=" + MyLong + "&alt=" + MyAlt + "&head=" + MyHead + "&speed=" + MySpeed + "&passive=" + inpause + "&myid=" + myid;
+            url = "http://mltaxi.ge/upload.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + MyLat + "&long=" + MyLong + "&alt=" + MyAlt + "&head=" + MyHead + "&speed=" + MySpeed + "&passive=" + inpause + "&myid=" + myid;
 	        }
         else 
 			{
-            url = "http://taxiprius.com.ge/upload.php?passive=" + inpause + "&myid=" + myid + "&lat=" + MyLat + "&long=" + MyLong + "&alt=" + MyAlt + "&head=" + MyHead + "&speed=" + MySpeed;
+            url = "http://mltaxi.ge/upload.php?passive=" + inpause + "&myid=" + myid + "&lat=" + MyLat + "&long=" + MyLong + "&alt=" + MyAlt + "&head=" + MyHead + "&speed=" + MySpeed;
 	        }
 		console.log("just upload: " + url);
         //	document.getElementById('erorebi').innerHTML="uname="+MyUser+"&pass="+MyPass+"&lat="+MyLat+"&long="+MyLong+"&alt="+MyAlt+"&head="+MyHead+"&speed="+MySpeed;
