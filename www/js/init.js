@@ -502,7 +502,7 @@ function update_data() {
 						meters=parseInt(b[10]);
 						call_class=parseInt(b[11]);
 
-						console.log(kmprice+ " / "+sit_price+ " / "+meters);
+						console.log(kmprice[1]+ " / "+sit_price[1]+ " / "+meters);
 						var metrebi=parseInt((meters/1000)*100)/100;
 						var metrebi_real=parseInt(metrebi*1.12*100)/100;
 

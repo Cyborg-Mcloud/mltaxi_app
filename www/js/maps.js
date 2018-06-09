@@ -349,7 +349,7 @@ function calcRoute(from_loc, to_loc, directionsService, directionsDisplay) {
 			var	tanxa=datvale_pussy(metrebi_real);
 			document.getElementById("dirinfo").innerHTML="მანძილი: "+metrebi_real+" კმ<hr>";
 			document.getElementById("dirinfo").innerHTML+="სავ. ფასი: "+parseInt(tanxa) + " - "+parseInt(tanxa+1)+" ლარი";
-			appr_price=parseInt(sit_price+(totalDistance/1000)*kmprice);
+			appr_price=parseInt(sit_price[call_class]+(totalDistance/1000)*kmprice[call_class]);
 			document.getElementById("dirinfo").style.display="inline";
 			directionsDisplay.setDirections(response);
             directionsDisplay.setMap(map);
