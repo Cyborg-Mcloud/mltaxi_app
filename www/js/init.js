@@ -262,7 +262,7 @@ function update_data() {
     if (gamehttp.readyState == 4) {
         mr = gamehttp.responseText;
         if (mr != "") {
-            // console.log("data received from server: " + mr);
+             console.log("data received from server: " + mr);
             if (mr == "register") 
 				{
 
@@ -304,9 +304,8 @@ function update_data() {
                // document.getElementById("chat_txt").scrollTop = document.getElementById("chat_txt").scrollHeight;
                 ;
             }
-            else {
-
-
+            else 
+				{
                 a = mr.split("|");
                 if (a[0] == "searching_taxi") 
 					{
@@ -525,8 +524,10 @@ function update_data() {
 					}
                 else 
 					{
+					// when screen is idle
                     if (mystatus > 0)
 						{
+						// tu cina statusi ragac iyo, anu gamozaxebidan movedi
 
 						if (mystatus==5)
 							{
@@ -567,9 +568,25 @@ function update_data() {
 						end_set=0;
 						//document.getElementById("driver_info").innerHTML =  taxiname;
                         change_status(0);
-                    }
-                    check_chat(parseInt(mr));
-                }
+						}
+					// check_chat(parseInt(mr));
+					if (a[0] == "idle") 
+						{
+						b = a[1].split(";");
+						if (b[0] != "") 
+							{
+							sit_price[1]=parseInt(b[4]);
+							kmprice[1]=parseFloat(b[5]);
+							sit_price[2]=parseInt(b[6]);
+							kmprice[2]=parseFloat(b[7]);
+							sit_price[3]=parseInt(b[8]);
+							kmprice[3]=parseFloat(b[9]);
+							meters=parseInt(b[10]);
+
+							}
+						}
+
+					}
 
                 if (inpause == 0) {
                     DrawUsers();
