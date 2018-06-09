@@ -241,8 +241,21 @@ var taxilong = 0;
 var taxilat = 0;
 var taxiname = "";
 var notified = 0;
-var sit_price=3;
-var kmprice=0.65;
+
+
+var sit_price= new Array();
+var kmprice= new Array();
+
+sit_price[1]=2;
+sit_price[2]=3;
+sit_price[3]=4;
+
+kmprice[1]=0.5;
+kmprice[2]=0.6;
+kmprice[3]=0.75;
+var last_status=0;
+
+
 var chatis = "";
 var meters=0;
 function update_data() {
@@ -297,15 +310,32 @@ function update_data() {
                 a = mr.split("|");
                 if (a[0] == "searching_taxi") 
 					{
+					last_status=mystatus;
                     notified = 0;
                     change_status(1);
                     callingtaxi = 0;
-					document.getElementById("input_boxes").style.display="none";
-					document.getElementById("on_call_menu").style.display="inline";
-					document.getElementById("dirinfo").style.display="none";
-
+					if (last_status!=mystatus)
+						{
+						document.getElementById("input_boxes").style.display="none";
+						document.getElementById("on_call_menu").style.display="inline";
+						document.getElementById("dirinfo").style.display="none";
+						document.getElementById("car_choose").style.display="none";
+						}
+					b = a[1].split(";");
+					if (b[0] != "") 
+						{
+                        sit_price[1]=parseInt(b[4]);
+						kmprice[1]=parseFloat(b[5]);
+                        sit_price[2]=parseInt(b[6]);
+						kmprice[2]=parseFloat(b[7]);
+                        sit_price[3]=parseInt(b[8]);
+						kmprice[3]=parseFloat(b[9]);
+						meters=parseInt(b[10]);
+						call_class=parseInt(b[11]);
+						}
 				 }
                 else if (a[0] == "taxi_moving") {
+					last_status=mystatus;
                     notified = 0;
                     callingtaxi = 0;
                     change_status(2);
@@ -319,9 +349,16 @@ function update_data() {
 						var latlng = new google.maps.LatLng(taxilat, taxilong);
 						 carMarker.setPosition(latlng);
 						 carMarker.setMap(map);
-						sit_price=parseInt(b[4]);
-						kmprice=parseFloat(b[5]);
-						meters=parseInt(b[6]);
+						
+						sit_price[1]=parseInt(b[4]);
+						kmprice[1]=parseFloat(b[5]);
+                        sit_price[2]=parseInt(b[6]);
+						kmprice[2]=parseFloat(b[7]);
+                        sit_price[3]=parseInt(b[8]);
+						kmprice[3]=parseFloat(b[9]);
+						meters=parseInt(b[10]);
+						call_class=parseInt(b[11]);
+						
 						var molodini="";
 						if (meters>50)
 							{
@@ -331,34 +368,52 @@ function update_data() {
 							{
 							molodini="0 წთ.";
 							}
-						document.getElementById("end_screen").style.display="none";
-						document.getElementById("driver_info").style.display="inline";
 						document.getElementById("driver_info").innerHTML =  taxiname+" <a href='Javascript: make_call();'><img src='resources/call.png' height=18px></a><hr>მოლოდინის დრო: "+molodini;
-						document.getElementById("input_boxes").style.display="none";
-						document.getElementById("on_call_menu").style.display="inline";
-						document.getElementById("dirinfo").style.display="none";
+
+						if (last_status!=mystatus)
+							{
+						
+							document.getElementById("end_screen").style.display="none";
+							document.getElementById("driver_info").style.display="inline";
+
+							document.getElementById("input_boxes").style.display="none";
+							document.getElementById("on_call_menu").style.display="inline";
+							document.getElementById("dirinfo").style.display="none";
+							document.getElementById("car_choose").style.display="none";
+							}
 
 						}
 					}
                 else if (a[0] == "taxi_arrived") 
 					{
                     callingtaxi = 0;
-
+					last_status=mystatus;
                     change_status(3);
                     b = a[1].split(";");
                     if (b[0] != "") {
                         taxilong = parseFloat(b[0]);
                         taxilat = parseFloat(b[1]);
                         taxiname = b[2];
-						sit_price=parseInt(b[4]);
-						kmprice=parseFloat(b[5]);
+
+						sit_price[1]=parseInt(b[4]);
+						kmprice[1]=parseFloat(b[5]);
+                        sit_price[2]=parseInt(b[6]);
+						kmprice[2]=parseFloat(b[7]);
+                        sit_price[3]=parseInt(b[8]);
+						kmprice[3]=parseFloat(b[9]);
+						meters=parseInt(b[10]);
+						call_class=parseInt(b[11]);
 
 						var latlng = new google.maps.LatLng(taxilat, taxilong);
-						 carMarker.setPosition(latlng);
-						 carMarker.setMap(map);
-						 navigator.vibrate(1000);
-						 document.getElementById("input_boxes").style.display="none";
-						 document.getElementById("on_call_menu").style.display="inline";
+						carMarker.setPosition(latlng);
+						carMarker.setMap(map);
+						if (mystatus!=last_status)
+							{
+							navigator.vibrate(1000);
+							document.getElementById("input_boxes").style.display="none";
+							document.getElementById("on_call_menu").style.display="inline";
+							document.getElementById("car_choose").style.display="none";
+							}
 						document.getElementById("driver_info").innerHTML =  taxiname+" <a href='Javascript: make_call();'><img src='resources/call.png' height=18px></a>";
                         //document.getElementById("taxi_number").innerHTML = "ბორტის ნომერი: " + taxiname;
                         if (notified == 0) {
@@ -391,6 +446,7 @@ function update_data() {
                 }
                 else if (a[0] == "taxi_waiting") 
 					{
+					last_status=mystatus;
                     callingtaxi = 0;
                     change_status(4);
                     b = a[1].split(";");
@@ -400,11 +456,24 @@ function update_data() {
                         taxilat = parseFloat(b[1]);
                         taxiname = b[2];
 						document.getElementById("driver_info").innerHTML =  taxiname+" <a href='Javascript: make_call();'><img src='resources/call.png' height=18px></a>";
-						document.getElementById("input_boxes").style.display="none";
-						document.getElementById("on_call_menu").style.display="inline";
-						document.getElementById("dirinfo").style.display="none";
-						sit_price=parseInt(b[4]);
-						kmprice=parseFloat(b[5]);
+						if (mystatus!=last_status)
+							{
+							
+							document.getElementById("input_boxes").style.display="none";
+							document.getElementById("on_call_menu").style.display="inline";
+							document.getElementById("dirinfo").style.display="none";
+							document.getElementById("car_choose").style.display="none";
+							}
+						
+						sit_price[1]=parseInt(b[4]);
+						kmprice[1]=parseFloat(b[5]);
+                        sit_price[2]=parseInt(b[6]);
+						kmprice[2]=parseFloat(b[7]);
+                        sit_price[3]=parseInt(b[8]);
+						kmprice[3]=parseFloat(b[9]);
+						meters=parseInt(b[10]);
+						call_class=parseInt(b[11]);
+
 						var latlng = new google.maps.LatLng(taxilat, taxilong);
 						 carMarker.setPosition(latlng);
 						 carMarker.setMap(map);
@@ -413,6 +482,7 @@ function update_data() {
                 else if (a[0] == "you_moving") 
 					{
 					console.log("you moving");
+					last_status=mystatus;
                     notified = 0;
                     callingtaxi = 0;
                     change_status(5);
@@ -423,9 +493,14 @@ function update_data() {
                         taxilat = parseFloat(b[1]);
 
 
-						sit_price=parseInt(b[4]);
-						kmprice=parseFloat(b[5]);
-						meters=parseInt(b[6]);
+						sit_price[1]=parseInt(b[4]);
+						kmprice[1]=parseFloat(b[5]);
+                        sit_price[2]=parseInt(b[6]);
+						kmprice[2]=parseFloat(b[7]);
+                        sit_price[3]=parseInt(b[8]);
+						kmprice[3]=parseFloat(b[9]);
+						meters=parseInt(b[10]);
+						call_class=parseInt(b[11]);
 
 						console.log(kmprice+ " / "+sit_price+ " / "+meters);
 						var metrebi=parseInt((meters/1000)*100)/100;
@@ -434,12 +509,15 @@ function update_data() {
 						var	tanxa=datvale_pussy(metrebi_real);
                         taxiname = "მანძილი: "+metrebi_real+" კმ<hr>თანხა: "+tanxa+" ლარი";
 						document.getElementById("driver_info").innerHTML =  "მანძილი: "+metrebi_real+" კმ<hr>თანხა: "+tanxa+" ლარი";
+						if (mystatus!=last_status)
+							{
 
-						document.getElementById("driver_info").style.display="inline";
-						document.getElementById("input_boxes").style.display="none";
-						document.getElementById("on_call_menu").style.display="none";
-						document.getElementById("dirinfo").style.display="none";
-
+							document.getElementById("driver_info").style.display="inline";
+							document.getElementById("input_boxes").style.display="none";
+							document.getElementById("on_call_menu").style.display="none";
+							document.getElementById("dirinfo").style.display="none";
+							document.getElementById("car_choose").style.display="none";
+							}
 						var latlng = new google.maps.LatLng(taxilat, taxilong);
 						 carMarker.setPosition(latlng);
 						 carMarker.setMap(map);
@@ -447,7 +525,8 @@ function update_data() {
 					}
                 else 
 					{
-                    if (mystatus > 0) {
+                    if (mystatus > 0)
+						{
 
 						if (mystatus==5)
 							{
@@ -456,8 +535,8 @@ function update_data() {
 							var	tanxa=datvale_pussy(metrebi_real);
 							document.getElementById("end_screen").style.display="inline";
 							document.getElementById("end_info").innerHTML = "მანძილი: "+metrebi_real+" კმ<hr>თანხა: "+tanxa+" ლარი";
-						  
 							}
+						call_class=1;
 						callingtaxi = 0;
                         notified = 0;
                         uplimit = 5;
@@ -470,10 +549,12 @@ function update_data() {
 						document.getElementById("driver_info").style.display="none";
 						document.getElementById("pac-input").value="";
 						document.getElementById("pac-input2").value="";
+						document.getElementById("pac-input3").value="";
+						document.getElementById("pac-input3").style.display="none";
 						document.getElementById("dirinfo").style.display="none";
 						document.getElementById("pac-input").style.disabled="false";
 						document.getElementById("pac-input2").style.disabled="false";
-
+						document.getElementById("car_choose").style.display="block";
 						document.getElementById("input_boxes").style.display="inline";
 						document.getElementById("on_call_menu").style.display="none";
 

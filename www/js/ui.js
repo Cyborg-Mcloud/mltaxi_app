@@ -240,7 +240,11 @@ function show_map() {
 		console.log("hiding settings");
 }
 
+function add_addr()
+	{
+	document.getElementById("pac-input3").style.display='inline';
 
+	}
 function stopScrolling(touchEvent) {
     touchEvent.preventDefault();
 }

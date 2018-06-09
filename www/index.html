@@ -71,6 +71,8 @@ td {
 
 			<input id="pac-input" type="text" placeholder="საწყისი მისამართი"  onfocus='setState(0);' onclick='this.select();' style='width: 100%;font-size:14px;padding:10px;background: url(resources/pin_start.svg) no-repeat left top;background-size: 20px 35px;padding-left: 25px;'>				
 			<input id="pac-input2" type="text" placeholder="დანიშნულების მისამართი"  onfocus='setState(1);' onclick='this.select();' style='width: 100%;font-size:14px;padding:10px;background: url(resources/pin_end.svg) no-repeat left top;background-size: 20px 35px;padding-left: 25px;'>
+
+			<input id="pac-input3" type="text" placeholder="მეორე დანიშნულების მისამართი"  onfocus='setState(2);' onclick='this.select();' style='width: 100%;font-size:14px;padding:10px;background: url(resources/pin_end.svg) no-repeat left top;background-size: 20px 35px;padding-left: 25px; display:none;'>
 		</div>
 
 		<div id='on_call_menu' style='display:none;  background-color:white; float:left; width:75%;'>
@@ -136,20 +138,20 @@ td {
 	<a id='call_but' style='position:fixed;bottom: 100px;left: 15%;width:60%;z-index:252;background-color:#34e777;color:white;border: 2px solid #27af55;border-radius: 20px; padding: 15px;font-size: 22px; font-weight: bold;  font-family:mainfont;' href='Javascript: call_taxi();'><center>გამოძახება</center></a>
 
 	<div id='car_choose' style='position:fixed; bottom:0px; left: 0;width:100%;z-index:252;background-color:white; color:white; font-size: 22px;  font-family:mainfont;'>
-	<center>
-	<table width=100%>
-	<tr>
-	<td align=center valign=bottom width=33%>
-	<a id='selc_div1' href='Javascript: sel_class(1);' style='display:block; padding:5px; color:black; border-radius:5px; border:1px solid orange;'><img src='resources/car.png'><br>სტანდარტი</a>
-	</td>
-	<td align=center valign=bottom width=34%>
-	<a id='selc_div2' href='Javascript: sel_class(2);' style='display:block; padding:5px; color:black;  border-radius:5px; border:1px solid white;'><img src='resources/limo.png'><br>VIP</a>
-	</td>
-	<td align=center valign=bottom width=33%>
-	<a id='selc_div3' href='Javascript: sel_class(3);' style='display:block; padding:5px; color:black;  border-radius:5px;border:1px solid white;'><img src='resources/jeep.png'><br>მინივენი</a>
-	</td>
-	</table>
-	</center>
+		<center>
+		<table width=100%>
+		<tr>
+		<td align=center valign=bottom width=33%>
+		<a id='selc_div1' href='Javascript: sel_class(1);' style='display:block; padding:5px; color:black; border-radius:5px; border:1px solid orange;'><img src='resources/car.png'><br>სტანდარტი</a>
+		</td>
+		<td align=center valign=bottom width=34%>
+		<a id='selc_div2' href='Javascript: sel_class(2);' style='display:block; padding:5px; color:black;  border-radius:5px; border:1px solid white;'><img src='resources/limo.png'><br>VIP</a>
+		</td>
+		<td align=center valign=bottom width=33%>
+		<a id='selc_div3' href='Javascript: sel_class(3);' style='display:block; padding:5px; color:black;  border-radius:5px;border:1px solid white;'><img src='resources/jeep.png'><br>მინივენი</a>
+		</td>
+		</table>
+		</center>
 
 
 	</div>
