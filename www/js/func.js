@@ -112,13 +112,13 @@ function lat2pixel(lat, zoom) {
 function datvale_pussy(met)
 	{
 	var tanxa=0;
-	if (met<4)
+	if (met<1)
 		{
 		tanxa=sit_price[call_class];
 		}
 	else
 		{
-		met=met-4;
+		met=met-1;
 		tanxa=parseInt( (met*kmprice[call_class]+sit_price[call_class])*100 )/100;	
 		}
 	return tanxa;
