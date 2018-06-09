@@ -8,6 +8,10 @@ function sel_class(class_sel)
 		document.getElementById("selc_div"+i).style.borderColor="white";
 		}
 	document.getElementById("selc_div"+call_class).style.borderColor="orange";
+	if (document.getElementById("pac-input2").value!="")
+		{
+		calcRoute(startMarker.getPosition(), endMarker.getPosition(), dirService, dirRender);
+		}
 	}
 
 
