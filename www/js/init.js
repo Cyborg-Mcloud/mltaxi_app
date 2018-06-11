@@ -554,7 +554,8 @@ function update_data() {
 						document.getElementById("pac-input3").style.display="none";
 						document.getElementById("dirinfo").style.display="none";
 						document.getElementById("pac-input").style.disabled="false";
-						document.getElementById("pac-input2").style.disabled="false";
+						document.getElementById("pac-input2").style.disabled="false";						
+						document.getElementById("pac-input3").style.disabled="false";
 						document.getElementById("car_choose").style.display="block";
 						document.getElementById("input_boxes").style.display="inline";
 						document.getElementById("on_call_menu").style.display="none";
