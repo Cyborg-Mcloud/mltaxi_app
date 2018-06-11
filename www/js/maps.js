@@ -365,7 +365,15 @@ console.log("set state: "+newState);
 		document.getElementById("pac-input2").value="";
 		document.getElementById("pac-input3").value="";
 		}
-	if (state==2)
+	else if (state==1)
+		{
+		document.getElementById("add_third").style.display="block";
+		}
+	else if (state==2)
+		{
+		calcRoute(startMarker.getPosition(), endMarker.getPosition(), dirService, dirRender);
+		}
+	else if (state==3)
 		{
 		calcRoute(startMarker.getPosition(), endMarker.getPosition(), dirService, dirRender);
 		}

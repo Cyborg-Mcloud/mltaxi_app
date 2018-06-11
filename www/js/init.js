@@ -559,6 +559,7 @@ function update_data() {
 						document.getElementById("car_choose").style.display="block";
 						document.getElementById("input_boxes").style.display="inline";
 						document.getElementById("on_call_menu").style.display="none";
+						document.getElementById("add_third").style.display="none";
 
 
 
