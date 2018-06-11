@@ -423,7 +423,7 @@ function calcRoute(from_loc, to_loc, directionsService, directionsDisplay)
               location: end,
               stopover: true
             });
-		var mtlad_end=thirdMarker.getPosition();
+		var mtlad_end=thirdmarker.getPosition();
 
 		var request = {
 			origin: start,
