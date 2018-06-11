@@ -431,8 +431,8 @@ function call_taxi() {
 		var end_lat = 0;
 		var end_lng = 0;
 
-		var 3rd_lat = 0;
-		var 3rd_lng = 0;
+		var third_lat = 0;
+		var third_lng = 0;
 
 		document.getElementById("input_boxes").style.display="none";
 		document.getElementById("on_call_menu").style.display="inline";
@@ -443,16 +443,16 @@ function call_taxi() {
 
 		var start_str=document.getElementById("pac-input").value;
 		var end_str=document.getElementById("pac-input2").value;
-		var 3rd_str=document.getElementById("pac-input3").value;
+		var third_str=document.getElementById("pac-input3").value;
 
 
 		start_str=start_str.replace("'","");
 		end_str=end_str.replace("'","");
-		3rd_str=3rd_str.replace("'","");
+		third_str=third_str.replace("'","");
 
 		start_str=start_str.replace(", Tbilisi, Georgia","");
 		end_str=end_str.replace(", Tbilisi, Georgia","");
-		3rd_str=3rd_str.replace(", Tbilisi, Georgia","");
+		third_str=third_str.replace(", Tbilisi, Georgia","");
 
 		if (end_set==1)
 			{
@@ -460,19 +460,19 @@ function call_taxi() {
 			end_lng=endMarker.getPosition().lng();
 			}
 
-		if (3rd_str!="")
+		if (third_str!="")
 			{
-			3rd_lat=3rdmarker.getPosition().lat();
-			3rd_lng=3rdmarker.getPosition().lng();
+			third_lat=thirdmarker.getPosition().lat();
+			third_lng=thirdmarker.getPosition().lng();
 			}
 
 		
 
         if (MyUser !== "nouser" && MyUser !== "") {
-            url = "http://mltaxi.ge/call.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&class="+call_class+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str+"&3rdlat=" + 3rd_lat + "&3rdlng=" + 3rd_lng+"&3rd_str="+3rd_str;
+            url = "http://mltaxi.ge/call.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&class="+call_class+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str+"&thirdlat=" + third_lat + "&thirdlng=" + third_lng+"&third_str="+third_str;
         }
         else {
-            url = "http://mltaxi.ge/call.php?lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&class="+call_class+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str+"&3rdlat=" + 3rd_lat + "&3rdlng=" + 3rd_lng+"&3rd_str="+3rd_str;
+            url = "http://mltaxi.ge/call.php?lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&class="+call_class+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str+"&thirdlat=" + third_lat + "&thirdlng=" + third_lng+"&third_str="+third_str;
         }
         callingtaxi = 1;
         console.log("taxi call: " + url);

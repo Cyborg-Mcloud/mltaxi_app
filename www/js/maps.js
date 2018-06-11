@@ -1,7 +1,7 @@
 
 var infoWindow, tempMarker, geocoder;
 var dirService, dirRender;
-var startMarker, endMarker, 3rdMarker, carMarker, positionMarker;
+var startMarker, endMarker, thirdmarker, carMarker, positionMarker;
 var startPosListener, endPosListener, selPosListener;
 
 function geocodeLocation(position, infoWindow, markerName) {
@@ -102,7 +102,7 @@ function initMap()
     endMarker = new google.maps.Marker({
         icon: END_ICON, map: map
     });
-    3rdmarker = new google.maps.Marker({
+    thirdmarker = new google.maps.Marker({
         icon: END_ICON, map: map
     });
 
@@ -219,8 +219,8 @@ function initMap()
 				}
 			else if (state==2)
 				{
-				3rdmarker.setPosition(place.geometry.location);
-				3rdmarker.setMap(map);
+				thirdmarker.setPosition(place.geometry.location);
+				thirdmarker.setMap(map);
 				}
 
 			end_set=1;
@@ -274,8 +274,8 @@ function initMap()
 				}
 			else if (state==2)
 				{
-				3rdmarker.setPosition(place.geometry.location);
-				3rdmarker.setMap(map);
+				thirdmarker.setPosition(place.geometry.location);
+				thirdmarker.setMap(map);
 				}
 
 			end_set=1;
@@ -332,10 +332,10 @@ function geocodeOnClick(e)
 			}    
 		else if (state==2)
 			{
-			3rdmarker.setPosition(e.latLng);
-			3rdmarker.setMap(map);	
+			thirdmarker.setPosition(e.latLng);
+			thirdmarker.setMap(map);	
 			end_set=1;
-			geocodeLocation(3rdmarker.getPosition(), infoWindow, '3rdmarker');
+			geocodeLocation(thirdmarker.getPosition(), infoWindow, 'thirdmarker');
 //			infoWindow.open(map, endMarker);
 			document.getElementById("pac-input3").blur();
 			calcRoute(startMarker.getPosition(), endMarker.getPosition(), dirService, dirRender);
@@ -423,7 +423,7 @@ function calcRoute(from_loc, to_loc, directionsService, directionsDisplay)
               location: end,
               stopover: true
             });
-		var mtlad_end=3rdMarker.getPosition();
+		var mtlad_end=thirdMarker.getPosition();
 
 		var request = {
 			origin: start,
