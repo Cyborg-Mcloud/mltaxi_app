@@ -66,7 +66,8 @@ function chat_send() {
     gamehttp.send(null);
 }
 
-function change_start() {
+function change_start()
+	{
 
 }
 
@@ -168,7 +169,8 @@ function chamovdivar() {
 
 }
 
-function cignore() {
+function cignore()
+	{
     if (document.getElementById("ignor_cache").checked == true) {
         cache_ignore = 1;
     }
@@ -177,7 +179,8 @@ function cignore() {
     }
 }
 
-function cignorewifi() {
+function cignorewifi() 
+	{
     if (document.getElementById("ignor_cache_on_wifi").checked == true) {
         cache_ignore_wifi = 1;
     }
@@ -186,13 +189,15 @@ function cignorewifi() {
     }
 }
 var win;
+
 function open_reg_window()
-{
-win=window.open('http://mltaxi.ge/user_reg.php',  '_blank', 'location=yes');
+	{
+	win=window.open('http://mltaxi.ge/user_reg.php',  '_blank', 'location=yes');
 
-}
+	}
 
-function setme() {
+function setme() 
+	{
     if (startMarker !== undefined) {
         map.panTo(positionMarker.getPosition());
         geocodeLocation(positionMarker.getPosition(), infoWindow, 'positionMarker', state === 0 ? 'startMarker' : 'endMarker');
@@ -259,7 +264,7 @@ function show_map() {
 function add_addr()
 	{
 	document.getElementById("pac-input3").style.display='inline';
-
+	document.getElementById("add_third").style.display='none';
 	}
 function stopScrolling(touchEvent) {
     touchEvent.preventDefault();

@@ -216,14 +216,16 @@ function initMap()
 				{
 				endMarker.setPosition(place.geometry.location);
 				endMarker.setMap(map);
+				end_set=1;
 				}
 			else if (state==2)
 				{
 				thirdmarker.setPosition(place.geometry.location);
 				thirdmarker.setMap(map);
+				end_set=2;
 				}
 
-			end_set=1;
+			
 			geocodeLocation(endMarker.getPosition(), infoWindow, 'endMarker');
 			//infoWindow.open(map, endMarker);
 			}
@@ -271,14 +273,16 @@ function initMap()
 				{
 				endMarker.setPosition(place.geometry.location);
 				endMarker.setMap(map);
+				end_set=1;
 				}
 			else if (state==2)
 				{
 				thirdmarker.setPosition(place.geometry.location);
 				thirdmarker.setMap(map);
+				end_set=2;
 				}
 
-			end_set=1;
+
 			geocodeLocation(endMarker.getPosition(), infoWindow, 'endMarker');
 			//infoWindow.open(map, endMarker);
 			}
@@ -334,7 +338,7 @@ function geocodeOnClick(e)
 			{
 			thirdmarker.setPosition(e.latLng);
 			thirdmarker.setMap(map);	
-			end_set=1;
+			end_set=2;
 			geocodeLocation(thirdmarker.getPosition(), infoWindow, 'thirdmarker');
 //			infoWindow.open(map, endMarker);
 			document.getElementById("pac-input3").blur();
@@ -424,7 +428,7 @@ function calcRoute(from_loc, to_loc, directionsService, directionsDisplay)
 	{
 	var start = from_loc;
     var end = to_loc;
-	if (document.getElementById("pac-input3").value!="")
+	if (document.getElementById("pac-input3").value!="" || end_set==2)
 		{
 		var waypts = [];
 		 waypts.push({
