@@ -26,8 +26,10 @@ var MyAcc;
 var started;
 started = 0;
 
-function onBackKeyDown() {
-    if (curwindow == 1) {
+function onBackKeyDown() 
+	{
+    if (curwindow == 1) 
+		{
         show_map();
     }
 }
