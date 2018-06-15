@@ -373,7 +373,7 @@ function update_data() {
 
 						if (last_status!=mystatus)
 							{
-						
+
 							document.getElementById("end_screen").style.display="none";
 							document.getElementById("driver_info").style.display="inline";
 
@@ -564,6 +564,8 @@ function update_data() {
 						document.getElementById("add_third").style.display="none";
 
 
+						document.getElementById("call_div").style.bottom="160px";
+						document.getElementById("car_choose").style.bottom="0px";
 
 						startMarker.setMap(null);
 						endMarker.setMap(null);
