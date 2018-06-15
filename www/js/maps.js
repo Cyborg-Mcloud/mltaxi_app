@@ -477,11 +477,11 @@ function calcRoute(from_loc, to_loc, directionsService, directionsDisplay)
 			var metrebi_real=parseInt(metrebi*1.12*100)/100;
 			var	tanxa=datvale_pussy(metrebi_real);
 			
-			document.getElementById("dirinfo").innerHTML='<div class="text-center">მანძილი: '+metrebi_real+'კმ</div>';
-			document.getElementById("dirinfo").innerHTML+='<div class="text-center"> სავარაუდო ფასი: '+parseInt(tanxa) +" ლარი</div>";
+			document.getElementById("dirinfo").innerHTML='<div class="container-fluid py-2" style="border-bottom: 1px solid red"><div class="text-center">მანძილი: '+metrebi_real+'კმ</div></div>';
+			document.getElementById("dirinfo").innerHTML+='<div class="container-fluid py-2"><div class="text-center"> სავარაუდო ფასი: '+parseInt(tanxa) +" ლარი</div></div>";
 			document.getElementById("dirinfo").style.display="block";
 			document.getElementById("call_div").style.bottom="200px";
-			document.getElementById("car_choose").style.bottom="30px";
+			document.getElementById("car_choose").style.bottom="40px";
 			console.log("varaudis datvla: "+call_class+ " - "+sit_price[call_class]+ " + "+kmprice[call_class]);
 
 			appr_price=parseInt(sit_price[call_class]+(totalDistance/1000)*kmprice[call_class]);
