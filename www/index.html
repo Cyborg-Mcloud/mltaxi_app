@@ -8,8 +8,15 @@
 <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">-->
 <head>
 
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>ML Taxi</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>ML Taxi</title>
+
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" href="assets/icomoon/icomoon.css" />
+	<link rel="stylesheet" href="assets/css/style.css" />
+
+	<script type="text/javascript" src="assets/jquery/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!--  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">-->
   <link href="css/main.css" rel="stylesheet">
   <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
@@ -36,25 +43,25 @@
     text-decoration: none;
     color: white;
   }
-/*  border:2px solid #13ae48;  border-radius:4px;*/
-#pac-input{padding:4px;margin:0px; background-color:white; color:#27af55; border:0px; font-weight:Bold;  font-family:mainfont;}
-#pac-input2{  padding:4px;margin:0px;background-color:white; color:#e8b427; border:0px; font-weight:Bold;  font-family:mainfont;}
-#pac-input3{  padding:4px;margin:0px;background-color:white; color:#e8b427; border:0px; font-weight:Bold;  font-family:mainfont;}
+/*  border:2px solid #13ae48;  border-radius:4px; color:#27af55; color:#e8b427;*/
+#pac-input{ padding:4px; margin:0px; background-color:white;  border:0px; font-weight:Bold;  font-family:mainfont; width: 100%; font-size:14px; padding:10px; background: url(resources/red_dot.png) no-repeat left top; background-position: 6px 14px; background-size: 12px 12px; padding-left: 27px; border:0px;}
+#pac-input2{  padding:4px; margin:0px; background-color:white;  border:0px; font-weight:Bold;  font-family:mainfont; width: 100%; font-size:14px; padding:10px; background: url(resources/red_dot.png) no-repeat left top; background-position: 6px 14px; background-size: 12px 12px; padding-left: 27px; border:0px;}
+#pac-input3{padding:4px; margin:0px; background-color:white;  border:0px; font-weight:Bold;  font-family:mainfont; width: 100%; font-size:14px; padding:10px; background: url(resources/red_dot.png) no-repeat left top; background-position: 6px 14px; background-size: 12px 12px; padding-left: 27px; border:0px; display:none;}
 
 
 #pac-input3:focus {
     background-color:#e8b427; 
-	color:black;
+	color:white;
 }
 
 #pac-input2:focus {
     background-color:#e8b427; 
-	color:black;
+	color:white;
 }
 
 #pac-input:focus {
     background-color:#32e875;
-	color:black;
+	color:white;
 	
 }
 
@@ -68,19 +75,22 @@ td {
 <div id='fanjara' style='position:relative; overflow:hidden; width:100%; height:100%;'>
 	<!--                                          zeda meniu -->
 	<div style='position:fixed;box-shadow: rgba(0, 0, 0, 0.75) 0px 4px 23px 0px;left:0px;top:0px;width:100%; z-index:211; background-color:white;'><!--background-color:#ffce00;-->
-	<div style='width:100%; height:15px;'></div>
-		<div style='float:left;padding:5px;'>
-		<a style='float:left; background-color:white;display: block; height:  margin-top:3px; ' href='Javascript: show_settings();'><img src='resources/settings.svg' height=30px></a><Br>
-		<a style='float:left; background-color:white;display: block; height:  margin-top:3px; display:none; ' href='Javascript: add_addr();' id="add_third"><img src='resources/plus.png' height=30px></a>
-      </div>
+	
 	<!--									mimartulebis asarchevebi-->
-		<div id='input_boxes' style='float:left; width:81%;'>
+		<div id='input_boxes' style='float:left; width:85%; '>
 
-			<input id="pac-input" type="text" placeholder="საწყისი მისამართი"  onfocus='setState(0);' onclick='this.select();' style='width: 100%;font-size:14px;padding:10px;background: url(resources/pin_start.svg) no-repeat left top;background-size: 20px 35px;padding-left: 25px;'>				
-			<input id="pac-input2" type="text" placeholder="დანიშნულების მისამართი"  onfocus='setState(1);' onclick='this.select();' style='width: 100%;font-size:14px;padding:10px;background: url(resources/pin_end.svg) no-repeat left top;background-size: 20px 35px;padding-left: 25px;'>
-
-			<input id="pac-input3" type="text" placeholder="მეორე დანიშნულების მისამართი"  onfocus='setState(2);' onclick='this.select();' style='width: 100%; font-size:14px; padding:10px; background: url(resources/pin_end.svg) no-repeat left top;background-size: 20px 35px; padding-left: 25px; display:none; border:0px;'>
+			<input id="pac-input" type="text" placeholder="საწყისი მისამართი"  onfocus='setState(0);' onclick='this.select();' >				
+			<input id="pac-input2" type="text" placeholder="დანიშნულების მისამართი"  onfocus='setState(1);' onclick='this.select();' >
+			<input id="pac-input3" type="text" placeholder="მეორე დანიშნულების მისამართი"  onfocus='setState(2);' onclick='this.select();'>
 		</div>
+
+		
+		<div style='float:right;padding:5px; display:block;'>
+			<a style='float:left; background-color:white;display: block; margin-top:3px; ' href='Javascript: show_settings();'><img src='resources/settings.png' height=30px></a><Br>
+			<a style='float:left; background-color:white;display: block; margin-top:3px; display:none; ' href='Javascript: add_addr();' id="add_third"><img src='resources/plus.png' height=30px></a>
+		</div>
+
+
 
 		<div id='on_call_menu' style='display:none;  background-color:white; float:left; width:75%;'>
 		<Br>
@@ -140,23 +150,40 @@ td {
 
 
 <!--		<a id='call_but' style='position:fixed; bottom:0px; left:20%; height:100px; width:60%; z-index:252;' href='Javascript: call_taxi();'><img src='resources/gamodzaxeba.svg' style='width:210px; height:100px;'></a>-->
-	<a id='call_but' style='position:fixed;bottom: 100px;left: 15%;width:60%;z-index:252;background-color:#34e777;color:white;border: 2px solid #27af55;border-radius: 20px; padding: 15px;font-size: 22px; font-weight: bold;  font-family:mainfont;' href='Javascript: call_taxi();'><center>გამოძახება</center></a>
 
-	<div id='car_choose' style='position:fixed; bottom:0px; left: 0;width:100%;z-index:252;background-color:white; color:white; font-size: 22px;  font-family:mainfont;'>
-		<center>
-		<table width=100%>
-		<tr>
-		<td align=center valign=bottom width=33%>
-		<a id='selc_div1' href='Javascript: sel_class(1);' style='display:block; padding:5px; color:black; border-radius:5px; border:1px solid orange;'><img src='resources/car.png'><br>სტანდარტი</a>
-		</td>
-		<td align=center valign=bottom width=34%>
-		<a id='selc_div2' href='Javascript: sel_class(2);' style='display:block; padding:5px; color:black;  border-radius:5px; border:1px solid white;'><img src='resources/limo.png'><br>VIP</a>
-		</td>
-		<td align=center valign=bottom width=33%>
-		<a id='selc_div3' href='Javascript: sel_class(3);' style='display:block; padding:5px; color:black;  border-radius:5px;border:1px solid white;'><img src='resources/jeep.png'><br>მინივენი</a>
-		</td>
-		</table>
-		</center>
+
+	<div class="container-fluid py-3" style='position:fixed;bottom: 160px;left: 0px; background-color:white;'>
+		<div class="d-flex align-items-center justify-content-around">
+			<div><img src="assets/images/taxi.svg" height="32" /></div>
+			<div class="text-center">
+				<a id='call_but' href='Javascript: call_taxi();' class="btn btn-danger rounded-0">გამოძახება</a>
+			</div>
+			<div><img src="assets/images/taxi.svg" height="32" /></div>
+		</div>
+	</div>
+
+<!--	<a id='call_but' style='position:fixed;bottom: 100px;left: 15%;width:60%;z-index:252;background-color:#34e777;color:white;border: 2px solid #27af55;border-radius: 20px; padding: 15px;font-size: 22px; font-weight: bold;  font-family:mainfont;' href='Javascript: call_taxi();'><center>გამოძახება</center></a>-->
+
+	<div id='car_choose' style='position:fixed; bottom:0px; left: 0;z-index:252;background-color:white; '>
+
+		<div class="footer d-table-row">
+			<div class="container-fluid py-4">
+				<div class="row">
+					<div class="col-4 text-center">
+						<a id='selc_div1' href='Javascript: sel_class(1);'  class="circle mb-2 active" style="background-image: url(assets/images/car_standard.png); background-size: 80%; margin: 0 auto; display:block;"></a>
+						სტანდარტი
+					</div>
+					<div class="col-4 text-center">
+						<a id='selc_div2' href='Javascript: sel_class(2);' class="circle mb-2" style="background-image: url(assets/images/car_comfort.png); background-size: 80%; margin: 0 auto; display:block;"></a>
+						კომფორტი
+					</div>
+					<div class="col-4 text-center">
+						<a  id='selc_div3' href='Javascript: sel_class(3);'  class="circle mb-2" style="background-image: url(assets/images/car_minivan.png); background-size: 80%; margin: 0 auto; display:block;"></a>
+						მინივენი
+					</div>
+				</div>
+			</div>
+		</div>
 
 
 	</div>

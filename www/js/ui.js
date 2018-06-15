@@ -5,9 +5,15 @@ function sel_class(class_sel)
 	call_class=class_sel;
 	for (i=1;i<=3 ;i++ )
 		{
-		document.getElementById("selc_div"+i).style.borderColor="white";
+		//document.getElementById("selc_div"+i).style.borderColor="white";
+
+
+		document.getElementById("selc_div"+i).classList.remove('active');
 		}
-	document.getElementById("selc_div"+call_class).style.borderColor="orange";
+	document.getElementById("selc_div"+call_class).classList.add('active');
+	
+
+	
 	if (document.getElementById("pac-input2").value!="")
 		{
 		calcRoute(startMarker.getPosition(), endMarker.getPosition(), dirService, dirRender);
