@@ -29,7 +29,7 @@
 </head>
 <style>
   body {
-  font-family:mainfont;
+ 
   background-color:white;
     color: black;
     margin: 0px;
@@ -37,14 +37,14 @@
   }
 
   a {
-   font-family:mainfont;
+ 
     text-decoration: none;
     color: white;
   }
 /*  border:2px solid #13ae48;  border-radius:4px; color:#27af55; color:#e8b427;*/
-#pac-input{ padding:4px; margin:0px; background-color:white;  border:0px; font-weight:Bold;  font-family:mainfont; width: 100%; font-size:14px; padding:10px; background: url(resources/red_dot.png) no-repeat left top; background-position: 6px 13px; background-size: 12px 12px; padding-left: 25px; border:0px;}
-#pac-input2{  padding:4px; margin:0px; background-color:white;  border:0px; font-weight:Bold;  font-family:mainfont; width: 100%; font-size:14px; padding:10px; background: url(resources/red_dot.png) no-repeat left top; background-position: 6px 13px; background-size: 12px 12px; padding-left: 25px; border:0px;}
-#pac-input3{padding:4px; margin:0px; background-color:white;  border:0px; font-weight:Bold;  font-family:mainfont; width: 100%; font-size:14px; padding:10px; background: url(resources/red_dot.png) no-repeat left top; background-position: 6px 13px; background-size: 12px 12px; padding-left: 25px; border:0px; display:none;}
+#pac-input{ padding:4px; margin:0px; background-color:white;  border:0px; font-weight:Bold;   width: 100%; font-size:14px; padding:10px; background: url(resources/red_dot.png) no-repeat left top; background-position: 6px 13px; background-size: 12px 12px; padding-left: 25px; border:0px;}
+#pac-input2{  padding:4px; margin:0px; background-color:white;  border:0px; font-weight:Bold;width: 100%; font-size:14px; padding:10px; background: url(resources/red_dot.png) no-repeat left top; background-position: 6px 13px; background-size: 12px 12px; padding-left: 25px; border:0px;}
+#pac-input3{padding:4px; margin:0px; background-color:white;  border:0px; font-weight:Bold;   width: 100%; font-size:14px; padding:10px; background: url(resources/red_dot.png) no-repeat left top; background-position: 6px 13px; background-size: 12px 12px; padding-left: 25px; border:0px; display:none;}
 
 
 #pac-input3:focus {
@@ -135,9 +135,33 @@ td {
 		
 		
 
+	<div class="footer d-table-row" id='driver_info'  style='position:fixed; bottom:0px; left:0px; z-index:252; display:none; '>
+		<div class="container-fluid py-3">
+			<div class="d-flex align-items-center justify-content-around">
+				<div><img src="assets/images/taxi.svg" height="32" /></div>
+				<div class="text-center">
+					მანქანა გზაშია
+				</div>
+				<div><img src="assets/images/taxi.svg" height="32" /></div>
+			</div>
+		</div>
+		<div class="container-fluid pb-4">
+			<div class="row">
+				<div id='manq_nomer' class="col-12 text-center py-2" style="border-top: 1px solid red; border-bottom: 1px solid red">
 
+				</div>
+				<div id='mzgol_name' class="col-12 text-center py-2" style="border-bottom: 1px solid red">
 
-		<div id='driver_info' style='position:fixed; bottom:30px; left:10%; height:140px; width:80%; z-index:252; color:gray; background-color:white; padding:10px; box-shadow: 4px 4px 23px 0px rgba(0,0,0,0.75); display:none; border-radius:10px;'></div>
+				</div>
+				<div id='mzgol_tel' class="col-12 text-center py-2">
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!--	<div id='driver_info' style='position:fixed; bottom:30px; left:10%; height:140px; width:80%; z-index:252; color:gray; background-color:white; padding:10px; box-shadow: 4px 4px 23px 0px rgba(0,0,0,0.75); display:none; border-radius:10px;'></div>-->
 
 
 		<div id='end_screen' style='display:none;position: fixed;top: 200px; left: 10%;width: 80%;z-index: 300;background-color: rgba(255,255,255,0.8);color: black;border-radius: 0;box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.10);border: 1px solid rgba(0,0,0,0.25);'>

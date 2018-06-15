@@ -359,6 +359,9 @@ function update_data() {
 						kmprice[3]=parseFloat(b[9]);
 						meters=parseInt(b[10]);
 						call_class=parseInt(b[11]);
+
+						var ta=new Array();
+						ta=taxiname.split("<hr>");
 						
 						var molodini="";
 						if (meters>50)
@@ -369,13 +372,19 @@ function update_data() {
 							{
 							molodini="0 წთ.";
 							}
-						document.getElementById("driver_info").innerHTML =  taxiname+" <a href='Javascript: make_call();'><img src='resources/call.png' height=18px></a><hr>მოლოდინის დრო: "+molodini;
+
+							
+						document.getElementById("manq_nomer").innerHTML=ta[1]+", მოლოდინის დრო: "+molodini+"წთ";
+						document.getElementById("mzgol_tel").innerHTML=" <a href='Javascript: make_call();'><img src='resources/call.png' height=18px></a>"+ta[2];
+						document.getElementById("mzgol_name").innerHTML=ta[0];
+
+					
 
 						if (last_status!=mystatus)
 							{
 
 							document.getElementById("end_screen").style.display="none";
-							document.getElementById("driver_info").style.display="inline";
+							document.getElementById("driver_info").style.display="block";
 
 							document.getElementById("input_boxes").style.display="none";
 							document.getElementById("on_call_menu").style.display="inline";
@@ -408,6 +417,10 @@ function update_data() {
 						var latlng = new google.maps.LatLng(taxilat, taxilong);
 						carMarker.setPosition(latlng);
 						carMarker.setMap(map);
+
+						var ta=new Array();
+						ta=taxiname.split("<hr>");
+						
 						if (mystatus!=last_status)
 							{
 							navigator.vibrate(1000);
@@ -415,7 +428,10 @@ function update_data() {
 							document.getElementById("on_call_menu").style.display="inline";
 							document.getElementById("car_choose").style.display="none";
 							}
-						document.getElementById("driver_info").innerHTML =  taxiname+" <a href='Javascript: make_call();'><img src='resources/call.png' height=18px></a>";
+					
+						document.getElementById("manq_nomer").innerHTML=ta[1];
+						document.getElementById("mzgol_tel").innerHTML=" <a href='Javascript: make_call();'><img src='resources/call.png' height=18px></a>"+ta[2];
+						document.getElementById("mzgol_name").innerHTML=ta[0];
                         //document.getElementById("taxi_number").innerHTML = "ბორტის ნომერი: " + taxiname;
                         if (notified == 0) {
 
@@ -456,7 +472,12 @@ function update_data() {
                         taxilong = parseFloat(b[0]);
                         taxilat = parseFloat(b[1]);
                         taxiname = b[2];
-						document.getElementById("driver_info").innerHTML =  taxiname+" <a href='Javascript: make_call();'><img src='resources/call.png' height=18px></a>";
+						var ta=new Array();
+						ta=taxiname.split("<hr>");
+						
+							document.getElementById("manq_nomer").innerHTML=ta[1];
+						document.getElementById("mzgol_tel").innerHTML=" <a href='Javascript: make_call();'><img src='resources/call.png' height=18px></a>"+ta[2];
+						document.getElementById("mzgol_name").innerHTML=ta[0];
 						if (mystatus!=last_status)
 							{
 							
@@ -509,11 +530,16 @@ function update_data() {
 
 						var	tanxa=datvale_pussy(metrebi_real);
                         taxiname = "მანძილი: "+metrebi_real+" კმ<hr>თანხა: "+tanxa+" ლარი";
-						document.getElementById("driver_info").innerHTML =  "მანძილი: "+metrebi_real+" კმ<hr>თანხა: "+tanxa+" ლარი";
+						
+						document.getElementById("manq_nomer").innerHTML="მანძილი: "+metrebi_real +" კმ";
+						document.getElementById("mzgol_tel").innerHTML=" <a href='Javascript: make_call();'><img src='resources/call.png' height=18px></a>"+ta[2];
+						document.getElementById("mzgol_name").innerHTML="თანხა: "+tanxa+" ლარი";
+
+
 						if (mystatus!=last_status)
 							{
 
-							document.getElementById("driver_info").style.display="inline";
+							document.getElementById("driver_info").style.display="block";
 							document.getElementById("input_boxes").style.display="none";
 							document.getElementById("on_call_menu").style.display="none";
 							document.getElementById("dirinfo").style.display="none";
