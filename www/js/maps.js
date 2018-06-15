@@ -84,7 +84,7 @@ function initMap()
     };
 
     var caricon = {
-        url: "resources/car.svg", // url
+        url: "resources/logo.svg", // url
         scaledSize: new google.maps.Size(50, 50), // size
         origin: new google.maps.Point(0, 0), // origin
         anchor: new google.maps.Point(25, 25) // anchor
