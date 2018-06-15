@@ -86,7 +86,7 @@ function change_status(newstat) {
             uplimit = 1;
             document.getElementById("taxi_search_screen").style.display = "inline";
             document.getElementById("info_text").innerHTML = "მიმდინარეობს ტაქსის ძიება";
-            document.getElementById("call_but").style.display = "none";
+            document.getElementById("call_div").style.display = "none";
             document.getElementById("arrived_screen").style.display = "none";
 			document.getElementById("add_third").style.display="none";
             //document.getElementById("certilebi").style.display = "none";
@@ -96,7 +96,7 @@ function change_status(newstat) {
         else if (newstat == 2) {
             document.getElementById("taxi_search_screen").style.display = "none";
             uplimit = 1;
-            document.getElementById("call_but").style.display = "none";
+            document.getElementById("call_div").style.display = "none";
             document.getElementById("info_text").innerHTML = "ტაქსი მოდის";
 			document.getElementById("driver_info").style.display="inline";
 			document.getElementById("add_third").style.display="none";
@@ -106,7 +106,7 @@ function change_status(newstat) {
         else if (newstat == 3) {
             uplimit = 1;
             document.getElementById("taxi_search_screen").style.display = "none";
-            document.getElementById("call_but").style.display = "none";
+            document.getElementById("call_div").style.display = "none";
             document.getElementById("arrived_screen").style.display = "inline";
 			document.getElementById("driver_info").style.display="inline";
 			document.getElementById("add_third").style.display="none";
@@ -118,7 +118,7 @@ function change_status(newstat) {
         else if (newstat == 4) {
             uplimit = 1;
             document.getElementById("taxi_search_screen").style.display = "none";
-            document.getElementById("call_but").style.display = "none";
+            document.getElementById("call_div").style.display = "none";
             document.getElementById("arrived_screen").style.display = "none";
 			document.getElementById("driver_info").style.display="inline";
 			document.getElementById("add_third").style.display="none";
@@ -129,7 +129,7 @@ function change_status(newstat) {
         else if (newstat == 5) {
             uplimit = 5;
             document.getElementById("taxi_search_screen").style.display = "none";
-            document.getElementById("call_but").style.display = "none";
+            document.getElementById("call_div").style.display = "none";
             document.getElementById("arrived_screen").style.display = "none";
             document.getElementById("info_text").innerHTML = "თქვენ მოძრაობთ";
 			document.getElementById("add_third").style.display="none";
@@ -140,7 +140,7 @@ function change_status(newstat) {
 
         else if (newstat == 0) {
             uplimit = 5;
-            document.getElementById("call_but").style.display = "inline";
+            document.getElementById("call_div").style.display = "block";
             document.getElementById("taxi_search_screen").style.display = "none";
             document.getElementById("arrived_screen").style.display = "none";
 			document.getElementById("add_third").style.display="none";
