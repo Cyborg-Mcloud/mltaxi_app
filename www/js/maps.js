@@ -255,7 +255,7 @@ function initMap()
 		{
         // infoWindow.close();
         tempMarker.setVisible(false);
-        var place = autocomplete2.getPlace();
+        var place = autocomplete3.getPlace();
         if (!place.geometry) {
             // User entered the name of a Place that was not suggested and
             // pressed the Enter key, or the Place Details request failed.
