@@ -8,7 +8,8 @@ function geocodeLocation(position, infoWindow, markerName) {
     console.log("geocodeLocation")
     geocoder.geocode({
         latLng: position
-    }, function (responses) {
+    }, function (responses) 
+		{
         console.log("geocodeLocation: "+ markerName )
         if (responses && responses.length > 0) {
             console.log(responses[0].formatted_address)
@@ -23,6 +24,7 @@ function geocodeLocation(position, infoWindow, markerName) {
 				}
 			else if (state==1)
 				{
+				console.log("chemi kargi movtyan");
 				document.getElementById("pac-input2").value=myaddr;
 				}
 			else if (state==2)
