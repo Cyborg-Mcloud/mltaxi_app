@@ -63,23 +63,23 @@ function initMap()
     dirService = new google.maps.DirectionsService();
     START_ICON = {
         url: "resources/pin_start.svg", // url
-        scaledSize: new google.maps.Size(30, 36), // size
+        scaledSize: new google.maps.Size(30, 38), // size
         origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(15, 36), // anchor
+        anchor: new google.maps.Point(15, 30), // anchor
         ratation: 30
     };
     END_ICON = {
         url: "resources/pin_end.svg", // url
-        scaledSize: new google.maps.Size(30, 36), // size
+        scaledSize: new google.maps.Size(30, 38), // size
         origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(15, 36), // anchor
+        anchor: new google.maps.Point(15, 30), // anchor
         ratation: 30
     };
     var myicon = {
         url: "resources/pin_start.svg", // url
-        scaledSize: new google.maps.Size(30, 36), // size
+        scaledSize: new google.maps.Size(30, 38), // size
         origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(15, 36), // anchor
+        anchor: new google.maps.Point(15, 30), // anchor
         ratation: 30
     };
 
