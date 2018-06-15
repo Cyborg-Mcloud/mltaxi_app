@@ -122,6 +122,7 @@ function initMap()
     tempMarker = new google.maps.Marker();
 
     selPosListener = map.addListener('click', function (e) {
+		console.log("aqedan "+state);
         geocodeOnClick(e);
        // infoWindow.open(map, tempMarker);
     });
@@ -285,7 +286,7 @@ function initMap()
 				}
 
 
-			geocodeLocation(endMarker.getPosition(), infoWindow, 'endMarker');
+			geocodeLocation(endMarker.getPosition(), infoWindow, 'thirdmarker');
 			//infoWindow.open(map, endMarker);
 			}
 		geocodeOnClick({latLng: place.geometry.location});
