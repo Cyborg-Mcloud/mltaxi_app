@@ -550,6 +550,40 @@ function update_data() {
 						 carMarker.setMap(map);
 						}
 					}
+				else if (a[0] == "toofar") 
+					{
+					console.log("out of radius");
+					
+					callingtaxi = 0;
+					notified = 0;
+					uplimit = 5;
+					carMarker.setMap(null);
+					taxiname="";
+
+					appr_price=0;
+					document.getElementById("call_but").style.display = "inline";
+					document.getElementById("arrived_screen").style.display = "none";
+					document.getElementById("driver_info").style.display="none";
+					document.getElementById("pac-input").value="";
+					document.getElementById("pac-input2").value="";
+					document.getElementById("dirinfo").style.display="none";
+					document.getElementById("pac-input").style.disabled="false";
+					document.getElementById("pac-input2").style.disabled="false";
+
+					document.getElementById("input_boxes").style.display="inline";
+					document.getElementById("on_call_menu").style.display="none";
+
+
+
+					startMarker.setMap(null);
+					endMarker.setMap(null);
+					dirRender.setMap(null);
+					endMarker.setMap(null);
+					end_set=0;
+					//document.getElementById("driver_info_text").innerHTML =  taxiname;
+					change_status(0);
+					alert("ML Taxi მუშაობს მხოლოდ ქუთაისში");
+					}
                 else 
 					{
 					// when screen is idle
