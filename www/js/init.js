@@ -2,23 +2,21 @@ var mystatus = 0;
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
-  
-
 var myid = 0;
 var map;
 
 var nogps = 0;
 
-var wlon = 44.7814581;
-var wlat = 41.7102118;
+var wlon = 42.6939377;
+var wlat = 42.2480125;
 var MyUser = "nouser";
 var MyPass = "nopass";
 var MyZoom = 17;
 var mytel = "";
 
 
-var MyLat = 41.718287;
-var MyLong = 44.778728;
+var MyLat = 42.2480125;
+var MyLong = 42.6939377;
 var MyAlt;
 var MyHead;
 var MySpeed;

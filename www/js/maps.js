@@ -368,6 +368,7 @@ console.log("set state: "+newState);
 		{
 		dirRender.setMap(null);
 		endMarker.setMap(null);
+		thirdmarker.setMap(null);
 		end_set=0;
 		document.getElementById("pac-input2").value="";
 		document.getElementById("pac-input3").value="";

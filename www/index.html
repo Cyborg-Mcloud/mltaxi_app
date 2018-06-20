@@ -166,7 +166,8 @@ td {
 
 		<div id='end_screen' style='display:none;position: fixed;top: 140px; left: 10%;width: 80%;z-index: 300;background-color: rgba(255,255,255,0.8);color: black;border-radius: 0;box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.10);border: 1px solid rgba(0,0,0,0.25);'>
 <Br>
-			<Center><a href='Javascript: card_pay();' class="btn btn-danger rounded-0">ბარათით გადახდა</a></center><Br>
+			<Center>
+			<!--<a href='Javascript: card_pay();' class="btn btn-danger rounded-0">ბარათით გადახდა</a></center><Br>-->
 			<div id='end_info' style='text-align:center;'></div>
 			<Br><br>
 			<center><a href='Javascript: close_end_info();' class="btn btn-danger rounded-0">დახურვა</a><center>
@@ -237,7 +238,7 @@ td {
 	</div>
 
 
-	<div id='settings_sheet'  style=' position:absolute; left:10%; top:180px; width:80%; background-color:white; color:gray; box-shadow: 4px 4px 23px 0px rgba(0,0,0,0.75); display:none; border-radius:5px; z-index:10000;'>
+	<div id='settings_sheet' class="header w-100" style=' position:absolute; left:0px; top:80px; background-color:white; z-index:10000; display:none;'>
 		
 
 				<div id='mydiv'></div>
@@ -248,37 +249,38 @@ td {
 				<div id='erorebi' style='display:none;'>Tilebi (zoom:16)</div>-->
 
 				<center>
-				<b>პროფილი</b>
-				<div id='login_page' style=' '>
-					<table>
-					  <tr>
-						<!--<td style='font-size:12px;'>მობ# ან ელფოსტა:</td>-->
-						<td><input type='text' id='myname' name='myname' Placeholder="მობ. ან ელ-ფოსტა"
-								   ></td>
-					  </tr>
-					  <tr>
-						<!--<td style='font-size:12px;'>პაროლი:</td>-->
-						<td><input type='password' id='mypass' name='mypass' placeholder="პაროლი" >
-						</td>
-					</tr>
-					<tr>
-						<td colspan=2 align=center><a href='Javascript: saveuser();' style='background-color:white; border:1px solid gray; display:block; color:black; padding:5px; font-size:14px;'>შესვლა</a>
-						</td>
-					  </tr>
-					</table>
-					<Br><br>
-					<a href='#' onclick="Javascript: open_reg_window();" style='background-color:white; border:1px solid gray; display:block; width:150px; color:black; padding:5px;'>რეგისტრაცია</a>
+				<div class="content d-table-row h-100">
+					<div class="my-3 px-4">
+						<p align="center"><img src="assets/images/logo.svg" height="96" /></p>
+						<div id='login_page' style=' '>
+						<form>
+							<div class="form-group">
+								<input type='text' class="form-control" id='myname' name='myname' Placeholder="მობ. ან ელ-ფოსტა">
+							</div>
+							<div class="form-group">
+								<input  class="form-control"  type='password' id='mypass' name='mypass' placeholder="პაროლი">
+							</div>
+							
+						
+							<div class="text-center">
+								<a  href='Javascript: saveuser();' class="btn btn-danger btn-lg rounded-0 mb-3">შესვლა</a><br />
+								<a  href="Javascript: open_reg_window();" class="btn btn-danger btn-lg rounded-0 mb-3">რეგისტრაცია</a><br />
+								<p><i class="icon-keyboard_arrow_left mr-1 text-danger"></i><a href='Javascript: show_map();' style='color:gray;'>უკან დაბრუნება</a></p>
+							</div>
+						</div>
+					</div>
 				</div>
-
 				<div id='loggedin_page' style=' display:none;'>
 					<div id='loggedin_info' style='color:black;'> -- </div>
-					<a href='Javascript: logout();' style='background-color:white; border:1px solid gray; display:block; width:150px; color:black; padding:5px;'>გამოსვლა</a>
+					<div class="text-center">
+						<a  href='Javascript: logout();' class="btn btn-danger btn-lg rounded-0 mb-3">გამოსვლა</a><br />
+						<p><i class="icon-keyboard_arrow_left mr-1 text-danger"></i><a href='Javascript: show_map();' style='color:gray;'>უკან დაბრუნება</a></p>
+					</div>
 				</div>
 				<br>
 
 
-				<a href='Javascript: show_map();' style='background-color:white; border:1px solid gray; display:block; width:150px; color:black; padding:5px; '>დახურვა</a>
-				<Br><Br>
+				
 				</center>
 
 
