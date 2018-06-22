@@ -71,14 +71,16 @@
 			<string>need location access to find things nearby</string>
 		</edit-config>
     </platform>
-	<preference name="permissions" value="none"/>
+<!--	<preference name="permissions" value="none"/>-->
     <preference name="target-device" value="handset"/>
    <preference name="phonegap-version" value="cli-8.0.0"/>
-<!--<preference name="phonegap-version" value="cli-7.0.1"/>-->
+
 
     <preference name="orientation" value="portrait"/>
-	<preference name="webviewbounce" value="false"/>
-    <preference name="DisallowOverscroll" value="true"/>-->
+	
+	<preference name="webviewbounce" value="true"/>
+    <preference name="DisallowOverscroll" value="false"/>
+
     <preference name="fullscreen" value="false"/>
     <preference name="keepRunning" value="true"/>
     <preference name="exit-on-suspend" value="false"/>
