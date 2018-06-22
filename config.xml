@@ -139,5 +139,7 @@
     <variable name="ANDROID_SUPPORT_VERSION" value="26.0.1" />
 </plugin>
 
+<gap:plugin name="cordova-plugin-statusbar" source="npm" />
+
 
 </widget>
