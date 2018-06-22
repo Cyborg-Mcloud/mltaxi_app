@@ -534,7 +534,7 @@ ta=taxiname.split("<hr>");
 						var	tanxa=datvale_pussy(metrebi_real);
                         taxiname = "მანძილი: "+metrebi_real+" კმ<hr>თანხა: "+tanxa+" ლარი";
 						
-						tanxa=parseInt(b[12]);
+						tanxa=parseFloat(b[12]);
 
 						
 						
