@@ -90,6 +90,7 @@
 	<preference name="StatusBarStyle" value="lightcontent" />
 
 	<preference name="EnableViewportScale"    value="true" />
+	<preference name="disableImmersive " value="true" />
     <description>
         ML Taxi
     </description>
