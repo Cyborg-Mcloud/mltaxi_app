@@ -516,7 +516,7 @@ function update_data() {
 						{
                         taxilong = parseFloat(b[0]);
                         taxilat = parseFloat(b[1]);
-
+taxiname = b[2];
 
 						sit_price[1]=parseInt(b[4]);
 						kmprice[1]=parseFloat(b[5]);
@@ -533,6 +533,10 @@ function update_data() {
 
 						var	tanxa=datvale_pussy(metrebi_real);
                         taxiname = "მანძილი: "+metrebi_real+" კმ<hr>თანხა: "+tanxa+" ლარი";
+						
+						tanxa=parseInt(b[12]);
+ta=taxiname.split("<hr>");
+						
 						
 						document.getElementById("manq_nomer").innerHTML="მანძილი: "+metrebi_real +" კმ";
 						document.getElementById("mzgol_tel").innerHTML=" <a href='Javascript: make_call();'><img src='resources/call.png' height=18px></a>"+ta[2];
