@@ -73,6 +73,10 @@
     </platform>
 <!--	<preference name="permissions" value="none"/>-->
     
+
+ <preference name="phonegap-version" value="cli-8.0.0"/>
+
+
     <description>
         ML Taxi
     </description>
