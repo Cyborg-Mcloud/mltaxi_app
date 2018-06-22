@@ -83,6 +83,10 @@
     <preference name="keepRunning" value="true"/>
     <preference name="exit-on-suspend" value="false"/>
 	<preference name="permissions" value="none"/>
+	<preference name="StatusBarOverlaysWebView" value="true" />
+	<preference name="StatusBarStyle" value="lightcontent" />
+	<preference name="stay-in-webview"            value="true" /> 
+	<preference name="EnableViewportScale"    value="true" />
     <description>
         ML Taxi
     </description>
