@@ -74,7 +74,25 @@
 <!--	<preference name="permissions" value="none"/>-->
     
 
- <preference name="phonegap-version" value="cli-8.0.0"/>
+<preference name="target-device" value="handset"/>
+   <preference name="phonegap-version" value="cli-8.0.0"/>
+
+
+    <preference name="orientation" value="portrait"/>
+	
+	<preference name="webviewbounce" value="false"/>
+    <preference name="DisallowOverscroll" value="true"/>
+
+    <preference name="fullscreen" value="false"/>
+    <preference name="keepRunning" value="true"/>
+    <preference name="exit-on-suspend" value="false"/>
+
+	<preference name="StatusBarOverlaysWebView" value="true" />
+
+	<preference name="StatusBarStyle" value="lightcontent" />
+
+	<preference name="EnableViewportScale"    value="true" />
+	<preference name="disableImmersive" value="true" />
 
 
     <description>

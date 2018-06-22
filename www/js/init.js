@@ -122,7 +122,12 @@ var gps_start=0;
 function onDeviceReady() {
 	console.log('succ')
 	console.log("setting immersive");
-	AndroidFullScreen.immersiveMode(successFunction, errorFunction);
+
+	// FULLSCREEN ->
+
+//	AndroidFullScreen.immersiveMode(successFunction, errorFunction);
+
+	
 	document.getElementById("GPS_search_screen").style.display = "none";
 
 	// es ari accurasy settingi fine location-ze da mere authorizacis motxovna da tu gps gamortulia an auth ar aqvs dialogs agdebs
