@@ -517,7 +517,7 @@ function update_data() {
                         taxilong = parseFloat(b[0]);
                         taxilat = parseFloat(b[1]);
 taxiname = b[2];
-
+ta=taxiname.split("<hr>");
 						sit_price[1]=parseInt(b[4]);
 						kmprice[1]=parseFloat(b[5]);
                         sit_price[2]=parseInt(b[6]);
@@ -535,7 +535,7 @@ taxiname = b[2];
                         taxiname = "მანძილი: "+metrebi_real+" კმ<hr>თანხა: "+tanxa+" ლარი";
 						
 						tanxa=parseInt(b[12]);
-ta=taxiname.split("<hr>");
+
 						
 						
 						document.getElementById("manq_nomer").innerHTML="მანძილი: "+metrebi_real +" კმ";
