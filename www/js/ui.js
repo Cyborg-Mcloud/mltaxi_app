@@ -486,10 +486,10 @@ function call_taxi() {
 		
 
         if (MyUser !== "nouser" && MyUser !== "") {
-            url = "http://mltaxi.ge/call.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&class="+call_class+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str+"&thirdlat=" + third_lat + "&thirdlng=" + third_lng+"&third_str="+third_str;
+            url = "http://mltaxi.ge/call.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&class="+call_class+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str+"&thirdlat=" + third_lat + "&thirdlng=" + third_lng+"&third_str="+third_str+"&varaudi="+appr_price;
         }
         else {
-            url = "http://mltaxi.ge/call.php?lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&class="+call_class+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str+"&thirdlat=" + third_lat + "&thirdlng=" + third_lng+"&third_str="+third_str;
+            url = "http://mltaxi.ge/call.php?lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&class="+call_class+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str+"&thirdlat=" + third_lat + "&thirdlng=" + third_lng+"&third_str="+third_str+"&varaudi="+appr_price;
         }
         callingtaxi = 1;
         console.log("taxi call: " + url);

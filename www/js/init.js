@@ -385,7 +385,7 @@ function update_data() {
 
 						if (last_status!=mystatus)
 							{
-
+							document.getElementById("status_txt").innerHTML="ტაქსი გზაშია";
 							document.getElementById("end_screen").style.display="none";
 							document.getElementById("driver_info").style.display="block";
 
@@ -426,6 +426,7 @@ function update_data() {
 						
 						if (mystatus!=last_status)
 							{
+							document.getElementById("status_txt").innerHTML="ტაქსი მოვიდა";
 							navigator.vibrate(1000);
 							document.getElementById("input_boxes").style.display="none";
 							document.getElementById("on_call_menu").style.display="inline";
@@ -483,7 +484,7 @@ function update_data() {
 						document.getElementById("mzgol_name").innerHTML=ta[0];
 						if (mystatus!=last_status)
 							{
-							
+							document.getElementById("status_txt").innerHTML="ტაქსი გელოდებათ";
 							document.getElementById("input_boxes").style.display="none";
 							document.getElementById("on_call_menu").style.display="inline";
 							document.getElementById("dirinfo").style.display="none";
@@ -545,7 +546,7 @@ ta=taxiname.split("<hr>");
 
 						if (mystatus!=last_status)
 							{
-
+							document.getElementById("status_txt").innerHTML="თქვენ მოძრაობთ";
 							document.getElementById("driver_info").style.display="block";
 							document.getElementById("input_boxes").style.display="none";
 							document.getElementById("on_call_menu").style.display="none";
