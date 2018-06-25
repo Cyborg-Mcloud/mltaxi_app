@@ -217,28 +217,32 @@ var updatacounter = 0;
 var uplimit = 5;
 
 var tanxa=0;
-function MainProg() {
+function MainProg() 
+	{
      console.log("main prog: " + started);
-    // console.log("focus is on: " + document.activeElement.getAttribute('id'));
-    if (started == 1) {
-        // console.log("I am running");
+ 
+    if (started == 1) 
+		{
         updatacounter++;
-        if (updatacounter > uplimit) {
+        if (updatacounter > uplimit) 
+			{
 			console.log("uploading data");
             UpData();
             updatacounter = 0;
-        }
-        if (myself == 1 && inpause == 0) {
+	        }
+
+
+        if (myself == 1 && inpause == 0) 
+			{
 			console.log("MainProg->myself: "+myself);
             wlon = MyLong;
             wlat = MyLat;
             setmypos();
 			 var myLatLng = {lat: MyLat, lng: MyLong};
 			 map.panTo(myLatLng);
-        }
-    }
+	        }
+	    }
     navigator.geolocation.getCurrentPosition(onSuccess, onError, {enableHighAccuracy: true, maximumAge: 0});
-
     setTimeout("MainProg();", 1000);
 }
 
@@ -606,42 +610,61 @@ ta=taxiname.split("<hr>");
 							var	tanxa=datvale_pussy(metrebi_real);
 							document.getElementById("end_screen").style.display="inline";
 							document.getElementById("end_info").innerHTML = "მანძილი: "+metrebi_real+" კმ<hr>თანხა: "+tanxa+" ლარი";
+
+
+							call_class=1;
+							callingtaxi = 0;
+							notified = 0;
+							uplimit = 5;
+							carMarker.setMap(null);
+							taxiname="";
+							appr_price=0;
+							startMarker.setMap(null);
+							endMarker.setMap(null);
+							dirRender.setMap(null);
+							endMarker.setMap(null);
+							end_set=0;
+
+							change_status(6);
 							}
-						call_class=1;
-						callingtaxi = 0;
-                        notified = 0;
-                        uplimit = 5;
-						carMarker.setMap(null);
-						taxiname="";
+						else
+							{
+							call_class=1;
+							callingtaxi = 0;
+							notified = 0;
+							uplimit = 5;
+							carMarker.setMap(null);
+							taxiname="";
 
-						appr_price=0;
-                        document.getElementById("call_but").style.display = "inline";
-                        document.getElementById("arrived_screen").style.display = "none";
-						document.getElementById("driver_info").style.display="none";
-						document.getElementById("pac-input").value="";
-						document.getElementById("pac-input2").value="";
-						document.getElementById("pac-input3").value="";
-						document.getElementById("pac-input3").style.display="none";
-						document.getElementById("dirinfo").style.display="none";
-						document.getElementById("pac-input").style.disabled="false";
-						document.getElementById("pac-input2").style.disabled="false";						
-						document.getElementById("pac-input3").style.disabled="false";
-						document.getElementById("car_choose").style.display="block";
-						document.getElementById("input_boxes").style.display="inline";
-						document.getElementById("on_call_menu").style.display="none";
-						document.getElementById("add_third").style.display="none";
+							appr_price=0;
+							document.getElementById("call_but").style.display = "inline";
+							document.getElementById("arrived_screen").style.display = "none";
+							document.getElementById("driver_info").style.display="none";
+							document.getElementById("pac-input").value="";
+							document.getElementById("pac-input2").value="";
+							document.getElementById("pac-input3").value="";
+							document.getElementById("pac-input3").style.display="none";
+							document.getElementById("dirinfo").style.display="none";
+							document.getElementById("pac-input").style.disabled="false";
+							document.getElementById("pac-input2").style.disabled="false";						
+							document.getElementById("pac-input3").style.disabled="false";
+							document.getElementById("car_choose").style.display="block";
+							document.getElementById("input_boxes").style.display="inline";
+							document.getElementById("on_call_menu").style.display="none";
+							document.getElementById("add_third").style.display="none";
 
 
-						document.getElementById("call_div").style.bottom="160px";
-						document.getElementById("car_choose").style.bottom="0px";
+							document.getElementById("call_div").style.bottom="160px";
+							document.getElementById("car_choose").style.bottom="0px";
 
-						startMarker.setMap(null);
-						endMarker.setMap(null);
-						dirRender.setMap(null);
-						endMarker.setMap(null);
-						end_set=0;
-						//document.getElementById("driver_info").innerHTML =  taxiname;
-                        change_status(0);
+							startMarker.setMap(null);
+							endMarker.setMap(null);
+							dirRender.setMap(null);
+							endMarker.setMap(null);
+							end_set=0;
+							//document.getElementById("driver_info").innerHTML =  taxiname;
+							change_status(0);
+							}
 						}
 					// check_chat(parseInt(mr));
 					if (a[0] == "idle") 
@@ -691,21 +714,31 @@ function UpData()
         myid = Math.floor(Math.random() * 100000000);
         WriteData();
 	    }
-    console.log("update, callingtaxi: "+callingtaxi);
-	if (callingtaxi == 0)
+	if (curint==1)
 		{
-        if (MyUser != "nouser" && MyUser != "") 
+		
+		console.log("update, callingtaxi: "+callingtaxi);
+		if (callingtaxi == 0 )
 			{
-            url = "http://mltaxi.ge/upload.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + MyLat + "&long=" + MyLong + "&alt=" + MyAlt + "&head=" + MyHead + "&speed=" + MySpeed + "&passive=" + inpause + "&myid=" + myid;
-	        }
-        else 
-			{
-            url = "http://mltaxi.ge/upload.php?passive=" + inpause + "&myid=" + myid + "&lat=" + MyLat + "&long=" + MyLong + "&alt=" + MyAlt + "&head=" + MyHead + "&speed=" + MySpeed;
-	        }
-		console.log("just upload: " + url);
-        //	document.getElementById('erorebi').innerHTML="uname="+MyUser+"&pass="+MyPass+"&lat="+MyLat+"&long="+MyLong+"&alt="+MyAlt+"&head="+MyHead+"&speed="+MySpeed;
-        gamehttp.open('GET', url, true);
-        gamehttp.send(null);
+			if (MyUser != "nouser" && MyUser != "") 
+				{
+				url = "http://mltaxi.ge/upload.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + MyLat + "&long=" + MyLong + "&alt=" + MyAlt + "&head=" + MyHead + "&speed=" + MySpeed + "&passive=" + inpause + "&myid=" + myid;
+				}
+			else 
+				{
+				url = "http://mltaxi.ge/upload.php?passive=" + inpause + "&myid=" + myid + "&lat=" + MyLat + "&long=" + MyLong + "&alt=" + MyAlt + "&head=" + MyHead + "&speed=" + MySpeed;
+				}
+			console.log("just upload: " + url);
+			//	document.getElementById('erorebi').innerHTML="uname="+MyUser+"&pass="+MyPass+"&lat="+MyLat+"&long="+MyLong+"&alt="+MyAlt+"&head="+MyHead+"&speed="+MySpeed;
+			gamehttp.open('GET', url, true);
+			gamehttp.send(null);
+			}
+		}
+	else
+		{
+		console.log("no internet");
+		checkConnection();
+
 		}
 	}
 

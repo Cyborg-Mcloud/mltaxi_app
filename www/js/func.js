@@ -58,9 +58,10 @@ function getscreenh() {
     return winH;
 }
 
-var curint = 'none';
+var curint = 0;
 
-function checkConnection() {
+function checkConnection() 
+	{
     var networkState = navigator.connection.type;
 
     var states = {};
@@ -74,8 +75,14 @@ function checkConnection() {
     states[Connection.NONE] = 'none';
 
     inter = states[networkState];
+	
+	if (inter!="none" && inter!="Unknown")
+		{
+		 curint = 1;
+		}
+	else
+		{curint=0;}
 
-    curint = inter;
   
 }
 

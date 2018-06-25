@@ -137,6 +137,18 @@ function change_status(newstat) {
 
        //     myself = 1;
         }
+		else if (newstat == 6) 
+			{
+            uplimit = 5;
+            document.getElementById("taxi_search_screen").style.display = "none";
+            document.getElementById("call_div").style.display = "none";
+            document.getElementById("arrived_screen").style.display = "none";
+            document.getElementById("info_text").innerHTML = "მგზავრობა დასრულებულია";
+			document.getElementById("add_third").style.display="none";
+//            document.getElementById("certilebi").style.display = "none";
+
+       //     myself = 1;
+	        }
 
         else if (newstat == 0) {
             uplimit = 5;
@@ -435,8 +447,13 @@ function call_taxi() {
    
     if (mytel == "" || mytel.length < 6) 
 		{
-
+		 var numbers = /^[0-9]+$/;
          mytel = prompt("რა ნომერზე დაგიკავშირდეთ?");
+		 if (mytel.length<9 || !inputtxt.value.match(numbers))
+      
+			 {	
+				mytel = prompt("გთხოვთ სწორად შეიყვანოთ ტელეფონის ნომერი");
+			 }	
          WriteData();
       
     }
