@@ -326,7 +326,11 @@ function update_data() {
 						{
 						document.getElementById("input_boxes").style.display="none";
 						document.getElementById("on_call_menu").style.display="inline";
-						document.getElementById("dirinfo").style.display="none";
+						document.getElementById("dirinfo_parent").style.display="none";
+
+
+
+
 						document.getElementById("car_choose").style.display="none";
 						}
 					b = a[1].split(";");
@@ -395,7 +399,7 @@ function update_data() {
 
 							document.getElementById("input_boxes").style.display="none";
 							document.getElementById("on_call_menu").style.display="inline";
-							document.getElementById("dirinfo").style.display="none";
+							document.getElementById("dirinfo_parent").style.display="none";
 							document.getElementById("car_choose").style.display="none";
 							}
 
@@ -491,7 +495,7 @@ function update_data() {
 							document.getElementById("status_txt").innerHTML="ტაქსი გელოდებათ";
 							document.getElementById("input_boxes").style.display="none";
 							document.getElementById("on_call_menu").style.display="inline";
-							document.getElementById("dirinfo").style.display="none";
+							document.getElementById("dirinfo_parent").style.display="none";
 							document.getElementById("car_choose").style.display="none";
 							}
 						
@@ -554,7 +558,7 @@ ta=taxiname.split("<hr>");
 							document.getElementById("driver_info").style.display="block";
 							document.getElementById("input_boxes").style.display="none";
 							document.getElementById("on_call_menu").style.display="none";
-							document.getElementById("dirinfo").style.display="none";
+							document.getElementById("dirinfo_parent").style.display="none";
 							document.getElementById("car_choose").style.display="none";
 							}
 						var latlng = new google.maps.LatLng(taxilat, taxilong);
@@ -578,7 +582,7 @@ ta=taxiname.split("<hr>");
 					document.getElementById("driver_info").style.display="none";
 					document.getElementById("pac-input").value="";
 					document.getElementById("pac-input2").value="";
-					document.getElementById("dirinfo").style.display="none";
+					document.getElementById("dirinfo_parent").style.display="none";
 					document.getElementById("pac-input").style.disabled="false";
 					document.getElementById("pac-input2").style.disabled="false";
 
@@ -644,7 +648,7 @@ ta=taxiname.split("<hr>");
 							document.getElementById("pac-input2").value="";
 							document.getElementById("pac-input3").value="";
 							document.getElementById("pac-input3").style.display="none";
-							document.getElementById("dirinfo").style.display="none";
+							document.getElementById("dirinfo_parent").style.display="none";
 							document.getElementById("pac-input").style.disabled="false";
 							document.getElementById("pac-input2").style.disabled="false";						
 							document.getElementById("pac-input3").style.disabled="false";
@@ -654,8 +658,8 @@ ta=taxiname.split("<hr>");
 							document.getElementById("add_third").style.display="none";
 
 
-							document.getElementById("call_div").style.bottom="160px";
-							document.getElementById("car_choose").style.bottom="0px";
+//							document.getElementById("call_div").style.bottom="160px";
+//							document.getElementById("car_choose").style.bottom="0px";
 
 							startMarker.setMap(null);
 							endMarker.setMap(null);
