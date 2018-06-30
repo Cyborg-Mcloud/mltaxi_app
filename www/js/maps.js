@@ -75,6 +75,13 @@ function initMap()
         anchor: new google.maps.Point(15, 30), // anchor
         ratation: 30
     };
+	THIRD_END_ICON = {
+        url: "resources/pin_red.svg", // url
+        scaledSize: new google.maps.Size(30, 38), // size
+        origin: new google.maps.Point(0, 0), // origin
+        anchor: new google.maps.Point(15, 30), // anchor
+        ratation: 30
+    };
     var myicon = {
         url: "resources/pin_start.svg", // url
         scaledSize: new google.maps.Size(30, 38), // size
@@ -105,7 +112,7 @@ function initMap()
         icon: END_ICON, map: map
     });
     thirdmarker = new google.maps.Marker({
-        icon: END_ICON, map: map
+        icon: THIRD_END_ICON, map: map
     });
 
 	
