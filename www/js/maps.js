@@ -3,6 +3,7 @@ var infoWindow, tempMarker, geocoder;
 var dirService, dirRender;
 var startMarker, endMarker, thirdmarker, carMarker, positionMarker;
 var startPosListener, endPosListener, selPosListener;
+var START_ICON, END_ICON, THIRD_END_ICON;
 
 function geocodeLocation(position, infoWindow, markerName) {
     console.log("geocodeLocation")
@@ -539,6 +540,6 @@ function addAndGetMarker(map, position, bounds, label, icon)
 
 }
 
-var START_ICON, END_ICON;
+
 
 //  mapTypeId: 'satellite',
