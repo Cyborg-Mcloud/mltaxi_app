@@ -98,10 +98,10 @@ function initMap()
         anchor: new google.maps.Point(25, 25) // anchor
     };
     var gpsIcon = {
-        url: "resources/images/Clustericon.svg", // url
-        scaledSize: new google.maps.Size(30, 30), // size
+        url: "resources/cursor.svg", // url
+        scaledSize: new google.maps.Size(30, 38), // size
         origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(29, 29) // anchor
+        anchor: new google.maps.Point(15, 30) // anchor
 
 
     };
