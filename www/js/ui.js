@@ -226,7 +226,7 @@ function close_iframe()
 function open_reg_window()
 	{
 	//win=window.open('http://mltaxi.ge/user_reg.php',  '_blank', 'location=yes');
-	url="http://mltaxi.ge/user_reg.php";
+	url="http://mltaxi.ge/user_reg.php?mytel="+mytel;
 
 	document.getElementById("myiframe").src=url;
 	document.getElementById("myiframe").style.display="inline";
