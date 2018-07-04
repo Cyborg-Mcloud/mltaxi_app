@@ -6,13 +6,16 @@ function sel_class(class_sel)
 	for (i=1;i<=3 ;i++ )
 		{
 		//document.getElementById("selc_div"+i).style.borderColor="white";
-		document.getElementById("carimage"+i).classList.remove('active');
-		}
-	document.getElementById("carimage"+call_class).classList.add('active');
+		//document.getElementById("carimage"+i).classList.remove('active');
 
-	document.getElementById("carimage1").style.backgroundImage = "url('assets/images/car_standard.png')"; 
-	document.getElementById("carimage2").style.backgroundImage = "url('assets/images/car_minivan.png')"; 
-	document.getElementById("carimage3").style.backgroundImage = "url('assets/images/car_comfort.png')"; 
+		document.getElementById("carimage"+i).className ="circle mb-2";
+		}
+	//document.getElementById("carimage"+call_class).classList.add('active');
+	document.getElementById("carimage"+i).className ="circle mb-2 active";
+
+//	document.getElementById("carimage1").style.backgroundImage = "url('assets/images/car_standard.png')"; 
+//	document.getElementById("carimage2").style.backgroundImage = "url('assets/images/car_minivan.png')"; 
+//	document.getElementById("carimage3").style.backgroundImage = "url('assets/images/car_comfort.png')"; 
 	
 
 	
