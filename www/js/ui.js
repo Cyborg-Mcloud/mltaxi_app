@@ -23,16 +23,16 @@ function slider_change()
 	if (slidepos==1)
 		{
 		document.getElementById("slide_up").style.display = "block";
-		document.getElementById("slide_up").style.display = "none";
+		document.getElementById("slide_down").style.display = "none";
 		document.getElementById("slider_content").style.display = "none";
-		sliderpos=0;
+		slidepos=0;
 		}
 	else
 		{
 		document.getElementById("slide_up").style.display = "none";
-		document.getElementById("slide_up").style.display = "block";
+		document.getElementById("slide_down").style.display = "block";
 		document.getElementById("slider_content").style.display = "block";
-		sliderpos=1;
+		slidepos=1;
 		}
 
 	}

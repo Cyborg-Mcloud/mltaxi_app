@@ -1,10 +1,15 @@
 @font-face {
 	font-family: 'DejaVuSansCondensed';
-	src: url('../fonts/DejaVuSansCondensed.eot?#iefix') format('embedded-opentype'),  url('../fonts/DejaVuSansCondensed.woff') format('woff'), url('../fonts/DejaVuSansCondensed.ttf')  format('truetype'), url('../fonts/DejaVuSansCondensed.svg#DejaVuSansCondensed') format('svg');
+	src: url('/assets/fonts/DejaVuSansCondensed.eot?#iefix') format('embedded-opentype'),  url('/assets/fonts/DejaVuSansCondensed.woff') format('woff'), url('/assets/fonts/DejaVuSansCondensed.ttf')  format('truetype'), url('/assets/fonts/DejaVuSansCondensed.svg#DejaVuSansCondensed') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
-
+@font-face {
+	font-family: 'BPGArialCaps2010Regular';
+	src: url('/assets/fonts/BPGArialCaps2010Regular.eot?#iefix') format('embedded-opentype'),  url('/assets/fonts/BPGArialCaps2010Regular.woff') format('woff'), url('/assets/fonts/BPGArialCaps2010Regular.ttf')  format('truetype'), url('/assets/fonts/BPGArialCaps2010Regular.svg#BPGArialCaps2010Regular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 html,
 body {
 	margin: 0;
@@ -22,6 +27,9 @@ body {
 .header a:focus,
 .header a.active {
 	text-decoration: none;
+}
+.caps {
+	font-family: 'BPGArialCaps2010Regular';
 }
 a {
 	color: #212529;
@@ -93,11 +101,11 @@ ul.decor li.green:before {
 	background-size: contain;
 	background-color: #eee;
 	border-radius: 50%;
-	width: 80px;
-	height: 80px
+	width: 60px;
+	height: 60px
 }
 .circle.active {
-	width: 90px;
-	height: 90px;
+	width: 70px;
+	height: 70px;
 	border: 2px solid #bd2130;
 }
