@@ -18,7 +18,7 @@ function sel_class(class_sel)
 		}
 	}
 slidepos=1;
-function slide_change()
+function slider_change()
 	{
 	if (slidepos==1)
 		{
