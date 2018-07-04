@@ -19,8 +19,25 @@ function sel_class(class_sel)
 		calcRoute(startMarker.getPosition(), endMarker.getPosition(), dirService, dirRender);
 		}
 	}
+slidepos=1;
+function slide_change()
+	{
+	if (slidepos==1)
+		{
+		document.getElementById("slide_up").style.display = "block";
+		document.getElementById("slide_up").style.display = "none";
+		document.getElementById("slider_content").style.display = "none";
+		sliderpos=0;
+		}
+	else
+		{
+		document.getElementById("slide_up").style.display = "none";
+		document.getElementById("slide_up").style.display = "block";
+		document.getElementById("slider_content").style.display = "block";
+		sliderpos=1;
+		}
 
-
+	}
 function sel_green()
 	{
 	document.getElementById("pac-input").focus();
@@ -49,28 +66,31 @@ function chat_key(e) {
 }
 
 
-function chat_click() {
-    if (chatopened == 0) {
+function chat_click() 
+	{
+    if (chatopened == 0) 
+		{
         document.getElementById("chat_window").style.display = "inline";
         document.getElementById("chat_div").style.bottom = "400px";
         chatopened = 1;
-    }
-    else {
+		}
+    else 
+		{
         document.getElementById("chat_window").style.display = "none";
         document.getElementById("chat_div").style.bottom = "60px";
         chatopened = 0;
-    }
+		}
+	}
 
-}
-
-function chat_send() {
+function chat_send() 
+	{
     chat_txt = document.getElementById("chat_send_text").value;
     document.getElementById("chat_send_text").value = "";
     url = "http://mltaxi.ge/chat.php?send=1&myid=" + myid + "&chat_txt=" + chat_txt;
     console.log("send chat: " + url);
     gamehttp.open('GET', url, true);
     gamehttp.send(null);
-}
+	}
 
 function change_start()
 	{
