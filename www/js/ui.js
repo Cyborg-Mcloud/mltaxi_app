@@ -9,6 +9,10 @@ function sel_class(class_sel)
 		document.getElementById("carimage"+i).classList.remove('active');
 		}
 	document.getElementById("carimage"+call_class).classList.add('active');
+
+	document.getElementById("carimage1").style.backgroundImage = "url('assets/images/car_standard.png')"; 
+	document.getElementById("carimage2").style.backgroundImage = "url('assets/images/car_minivan.png')"; 
+	document.getElementById("carimage3").style.backgroundImage = "url('assets/images/car_comfort.png')"; 
 	
 
 	
