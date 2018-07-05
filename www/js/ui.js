@@ -11,7 +11,7 @@ function sel_class(class_sel)
 		document.getElementById("carimage"+i).className ="circle mb-2";
 		}
 	//document.getElementById("carimage"+call_class).classList.add('active');
-	document.getElementById("carimage"+i).className ="circle mb-2 active";
+	document.getElementById("carimage"+call_class).className ="circle mb-2 active";
 
 //	document.getElementById("carimage1").style.backgroundImage = "url('assets/images/car_standard.png')"; 
 //	document.getElementById("carimage2").style.backgroundImage = "url('assets/images/car_minivan.png')"; 
