@@ -7,16 +7,16 @@ function sel_class(class_sel)
 		{
 		//document.getElementById("selc_div"+i).style.borderColor="white";
 		//document.getElementById("carimage"+i).classList.remove('active');
-	document.getElementById("carimage"+i).style.width="60px";
-	document.getElementById("carimage"+i).style.height="60px";
+	//document.getElementById("carimage"+i).style.width="60px";
+//	document.getElementById("carimage"+i).style.height="60px";
 	document.getElementById("carimage"+i).style.border="0"; //2px solid #bd2130";
 //		document.getElementById("carimage"+i).className ="circle mb-2";
 		}
 	//document.getElementById("carimage"+call_class).classList.add('active');
 //	document.getElementById("carimage"+call_class).className ="circle mb-2 active";
 
-	document.getElementById("carimage"+call_class).style.width="70px";
-	document.getElementById("carimage"+call_class).style.height="70px";
+//	document.getElementById("carimage"+call_class).style.width="70px";
+//	document.getElementById("carimage"+call_class).style.height="70px";
 	document.getElementById("carimage"+call_class).style.border="2px solid #bd2130";
 
 
