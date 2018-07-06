@@ -544,6 +544,8 @@ function call_taxi() {
 			end_lat=endMarker.getPosition().lat();
 			end_lng=endMarker.getPosition().lng();
 			}
+		else 
+			{appr_price=parseInt(sit_price[call_class]);}
 
 		if (third_str!="")
 			{
