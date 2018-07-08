@@ -39,11 +39,13 @@ function onMenuDown() {
 }
 
 
-function onSearchDown() {
-    if (myself == 0) {
+function onSearchDown() 
+	{
+    if (myself == 0) 
+		{
         setme();
-    }
-}
+	    }
+	}
 
 function onVolumeDown() {
     //zoomme(-1);

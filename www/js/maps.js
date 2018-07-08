@@ -369,7 +369,7 @@ const SWITCH_TEXTS = ['დასაწყისის არჩევა', 'დ�
 function setState(newState)
 	{
 	//chooseLocation(state);
-console.log("set state: "+newState);
+	console.log("set state: "+newState);
     state = newState;
   //  document.getElementById('switchButton').innerHTML = SWITCH_TEXTS[state];
 	if (state==0)

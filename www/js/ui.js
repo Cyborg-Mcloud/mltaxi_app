@@ -267,12 +267,14 @@ function open_reg_window()
 
 function setme() 
 	{
-    if (startMarker !== undefined) {
+	console.log("setme");
+    if (positionMarker !== undefined) 
+		{
         map.panTo(positionMarker.getPosition());
-        geocodeLocation(positionMarker.getPosition(), infoWindow, 'positionMarker', state === 0 ? 'startMarker' : 'endMarker');
+        //geocodeLocation(positionMarker.getPosition(), infoWindow, 'positionMarker', state === 0 ? 'startMarker' : 'endMarker');
 
-        infoWindow.open(map, positionMarker);
-    }
+//        infoWindow.open(map, positionMarker);
+	    }
     // startMarker.setOptions({position: {lat: MyLat, lng: MyLong}})
     // console.log("setme");
     // if (myself == 0) {
