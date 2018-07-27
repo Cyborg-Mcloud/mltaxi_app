@@ -1,4 +1,5 @@
 	var myMap;
+var multiRoute, multiRoute2;
 var infoWindow, tempMarker, geocoder;
 var dirService, dirRender;
 var startMarker, endMarker, thirdmarker, carMarker, positionMarker;

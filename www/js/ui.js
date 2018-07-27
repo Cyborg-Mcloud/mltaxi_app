@@ -465,7 +465,7 @@ function setmypos() {
 
     DrawHomePos();
 
-    positionMarker.setCoordinates([MyLat,MyLong]);
+    positionMarker.geometry.setCoordinates([MyLat,MyLong]);
    
     console.log("move main marker");
 }
