@@ -273,18 +273,6 @@ function switchState()
 
 	}
 
-function setLocation(marker, target) 
-	{
-	console.log("setLocation: ");
-    target.setPosition(marker.getPosition());
-    map.panTo(target.getPosition());
-
-    if (marker === tempMarker || marker === positionMarker) {
-        switchState();
-        marker.setMap(null);
-    }
-}
-
 function chooseLocation(curstate) 
 	{
 	if (curstate==0)

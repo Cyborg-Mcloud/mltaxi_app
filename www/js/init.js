@@ -360,8 +360,8 @@ function update_data() {
                         taxilat = parseFloat(b[1]);
                         taxiname = b[2];
 					
-						var latlng = new [taxilat, taxilong];
-						 carMarker.geometry.setCoordinates(latlng);
+
+						 carMarker.geometry.setCoordinates([taxilat, taxilong]);
 						// carMarker.setMap(map);
 						
 						sit_price[1]=parseInt(b[4]);
@@ -427,8 +427,8 @@ function update_data() {
 						meters=parseInt(b[10]);
 						call_class=parseInt(b[11]);
 
-						var latlng = new [taxilat, taxilong];
-						carMarker.geometry.setCoordinates(latlng);
+
+						 carMarker.geometry.setCoordinates([taxilat, taxilong]);
 
 
 						var ta=new Array();
@@ -510,8 +510,8 @@ function update_data() {
 						meters=parseInt(b[10]);
 						call_class=parseInt(b[11]);
 
-						var latlng = new [taxilat, taxilong];
-						 carMarker.geometry.setCoordinates(latlng);
+
+						 carMarker.geometry.setCoordinates([taxilat, taxilong]);
 
 						}
 					}
@@ -563,8 +563,8 @@ ta=taxiname.split("<hr>");
 							document.getElementById("dirinfo_parent").style.display="none";
 							document.getElementById("car_choose").style.display="none";
 							}
-						var latlng = new [taxilat, taxilong];
-						 carMarker.geometry.setCoordinates(latlng);
+
+						 carMarker.geometry.setCoordinates([taxilat, taxilong]);
 
 						}
 					}
@@ -575,7 +575,7 @@ ta=taxiname.split("<hr>");
 					callingtaxi = 0;
 					notified = 0;
 					uplimit = 5;
-					carMarker.setMap(null);
+
 					taxiname="";
 
 					appr_price=0;
@@ -593,10 +593,11 @@ ta=taxiname.split("<hr>");
 
 
 
-					startMarker.setMap(null);
-					endMarker.setMap(null);
-					dirRender.setMap(null);
-					endMarker.setMap(null);
+					myMap.geoObjects.remove(multiRoute);
+					myMap.geoObjects.remove(multiRoute2);
+					myMap.geoObjects.remove(startMarker);
+					myMap.geoObjects.remove(endMarker);
+					myMap.geoObjects.remove(thirdmarker);
 					end_set=0;
 					//document.getElementById("driver_info_text").innerHTML =  taxiname;
 					change_status(0);
@@ -622,13 +623,14 @@ ta=taxiname.split("<hr>");
 							callingtaxi = 0;
 							notified = 0;
 							uplimit = 5;
-							carMarker.setMap(null);
+
 							taxiname="";
 							appr_price=0;
-							startMarker.setMap(null);
-							endMarker.setMap(null);
-							dirRender.setMap(null);
-							endMarker.setMap(null);
+							myMap.geoObjects.remove(multiRoute);
+							myMap.geoObjects.remove(multiRoute2);
+							myMap.geoObjects.remove(startMarker);
+							myMap.geoObjects.remove(endMarker);
+							myMap.geoObjects.remove(thirdmarker);
 							end_set=0;
 
 							change_status(6);
@@ -639,7 +641,7 @@ ta=taxiname.split("<hr>");
 							callingtaxi = 0;
 							notified = 0;
 							uplimit = 5;
-							carMarker.setMap(null);
+
 							taxiname="";
 
 							appr_price=0;
@@ -663,10 +665,11 @@ ta=taxiname.split("<hr>");
 //							document.getElementById("call_div").style.bottom="160px";
 //							document.getElementById("car_choose").style.bottom="0px";
 
-							startMarker.setMap(null);
-							endMarker.setMap(null);
-							dirRender.setMap(null);
-							endMarker.setMap(null);
+							myMap.geoObjects.remove(multiRoute);
+							myMap.geoObjects.remove(multiRoute2);
+							myMap.geoObjects.remove(startMarker);
+							myMap.geoObjects.remove(endMarker);
+							myMap.geoObjects.remove(thirdmarker);
 							end_set=0;
 							//document.getElementById("driver_info").innerHTML =  taxiname;
 							change_status(0);
@@ -833,13 +836,13 @@ function onSuccess(position) {
 //        lng: position.coords.longitude
 //    };
 
-var pos=new [position.coords.latitude,  position.coords.longitude]
-    positionMarker.geometry.setCoordinates(pos);
+
+    positionMarker.geometry.setCoordinates([position.coords.latitude,position.coords.longitude]);
 
 	if (gps_start==0)
 		{
 		// gps-is pirveli gashveba
-		positionMarker.setMap(map);
+
 
 		gps_start=1;
 		myMap.geoObjects.remove(multiRoute);
@@ -847,13 +850,13 @@ var pos=new [position.coords.latitude,  position.coords.longitude]
 		myMap.geoObjects.remove(startMarker);
 		myMap.geoObjects.remove(endMarker);
 		myMap.geoObjects.remove(thirdmarker);
-		startMarker = new ymaps.Placemark(pos, {hintContent: 'სტარტი', balloonContent: 'სტარტი'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_start.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+		startMarker = new ymaps.Placemark([position.coords.latitude,position.coords.longitude], {hintContent: 'სტარტი', balloonContent: 'სტარტი'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_start.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
 		myMap.geoObjects.add(startMarker);
 
-		geocodeLocation(pos, infoWindow, 'startMarker');
+	//	geocodeLocation([position.coords.latitude,position.coords.longitude], infoWindow, 'startMarker');
 //		infoWindow.open(map, startMarker);
 	    
-		myMap.setCenter(pos);
+		myMap.setCenter([position.coords.latitude,position.coords.longitude]);
 		}
 
     // programis dastartva
