@@ -332,7 +332,7 @@ function calcRoute()
 
 			appr_price=parseInt(sit_price[call_class]+(totalDistance/1000)*kmprice[call_class]);
 			console.log("distance: "+totalDistance+", appr_price: "+appr_price);
-			document.getElementById("dirinfo").innerHTML='<p style="font-size: 20px">'+parseInt(totalDistance/1000)+'კმ / '+parseInt(app_price) +"-"+parseInt(app_price+1)+'₾</p>';
+			document.getElementById("dirinfo").innerHTML='<p style="font-size: 20px">'+parseInt(totalDistance/1000)+'კმ / '+parseInt(appr_price) +"-"+parseInt(appr_price+1)+'₾</p>';
 			document.getElementById("dirinfo_parent").style.display="block";
 			});
 		}
