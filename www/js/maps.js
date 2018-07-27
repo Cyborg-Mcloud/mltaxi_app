@@ -293,9 +293,9 @@ var appr_price=0;
 function calcRoute() 
 	{
 	var start = startMarker.geometry;
-	console.log(start);
+
 	var end = endMarker.geometry;
-	console.log(end);
+
 	if (document.getElementById("pac-input3").value!="" || end_set==2)
 		{
 
@@ -306,8 +306,15 @@ function calcRoute()
 		multiRoute2 = new ymaps.multiRouter.MultiRoute({
 		referencePoints: [ start, end, mtlad_end ], params: {results: 2} }, {boundsAutoApply: true});
 		myMap.geoObjects.add(multiRoute2);
-
 	
+		multiRoute2.model.events.add("requestsuccess", function (event) {
+
+			console.log("mroute2: "+multiRoute2.getRoutes().get(0).properties.get('distance').value);
+			totalDistance=multiRoute2.getRoutes().get(0).properties.get('distance').value;
+
+			appr_price=parseInt(sit_price[call_class]+(totalDistance/1000)*kmprice[call_class]);
+			console.log("distance: "+totalDistance+", appr_price: "+appr_price);
+			});
 
 		}
 	else
@@ -317,9 +324,15 @@ function calcRoute()
 		multiRoute = new ymaps.multiRouter.MultiRoute({
 		referencePoints: [ start, end], params: {results: 2} }, {boundsAutoApply: true});
 		myMap.geoObjects.add(multiRoute);
+		multiRoute.model.events.add("requestsuccess", function (event) {
+
+			console.log("mroute: "+multiRoute.getRoutes().get(0).properties.get('distance').value);
+			totalDistance=multiRoute.getRoutes().get(0).properties.get('distance').value;
+
+			appr_price=parseInt(sit_price[call_class]+(totalDistance/1000)*kmprice[call_class]);
+			console.log("distance: "+totalDistance+", appr_price: "+appr_price);
+			});
 		}
 	}
-
-
 
 
