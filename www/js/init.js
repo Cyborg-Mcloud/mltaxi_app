@@ -240,8 +240,8 @@ function MainProg()
             wlon = MyLong;
             wlat = MyLat;
             setmypos();
-			 var myLatLng = {lat: MyLat, lng: MyLong};
-			 map.panTo(myLatLng);
+			 var myLatLng = new [ MyLat, MyLong];
+			 myMap.panTo(myLatLng);
 	        }
 	    }
     navigator.geolocation.getCurrentPosition(onSuccess, onError, {enableHighAccuracy: true, maximumAge: 0});
@@ -360,9 +360,9 @@ function update_data() {
                         taxilat = parseFloat(b[1]);
                         taxiname = b[2];
 					
-						var latlng = new google.maps.LatLng(taxilat, taxilong);
-						 carMarker.setPosition(latlng);
-						 carMarker.setMap(map);
+						var latlng = new [taxilat, taxilong];
+						 carMarker.geometry.setCoordinates(latlng);
+						// carMarker.setMap(map);
 						
 						sit_price[1]=parseInt(b[4]);
 						kmprice[1]=parseFloat(b[5]);
@@ -427,9 +427,9 @@ function update_data() {
 						meters=parseInt(b[10]);
 						call_class=parseInt(b[11]);
 
-						var latlng = new google.maps.LatLng(taxilat, taxilong);
-						carMarker.setPosition(latlng);
-						carMarker.setMap(map);
+						var latlng = new [taxilat, taxilong];
+						carMarker.geometry.setCoordinates(latlng);
+
 
 						var ta=new Array();
 						ta=taxiname.split("<hr>");
@@ -510,9 +510,9 @@ function update_data() {
 						meters=parseInt(b[10]);
 						call_class=parseInt(b[11]);
 
-						var latlng = new google.maps.LatLng(taxilat, taxilong);
-						 carMarker.setPosition(latlng);
-						 carMarker.setMap(map);
+						var latlng = new [taxilat, taxilong];
+						 carMarker.geometry.setCoordinates(latlng);
+
 						}
 					}
                 else if (a[0] == "you_moving") 
@@ -563,9 +563,9 @@ ta=taxiname.split("<hr>");
 							document.getElementById("dirinfo_parent").style.display="none";
 							document.getElementById("car_choose").style.display="none";
 							}
-						var latlng = new google.maps.LatLng(taxilat, taxilong);
-						 carMarker.setPosition(latlng);
-						 carMarker.setMap(map);
+						var latlng = new [taxilat, taxilong];
+						 carMarker.geometry.setCoordinates(latlng);
+
 						}
 					}
 				else if (a[0] == "toofar") 
@@ -828,12 +828,13 @@ function onSuccess(position) {
     wlat = MyLat;
 	console.log("on succ, sett long: "+MyLat+ " - " +MyLong);
 
-var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-    };
+//	var pos = {
+//        lat: position.coords.latitude,
+//        lng: position.coords.longitude
+//    };
 
-    positionMarker.setPosition(pos);
+var pos=new [position.coords.latitude,  position.coords.longitude]
+    positionMarker.geometry.setCoordinates(pos);
 
 	if (gps_start==0)
 		{
@@ -841,13 +842,18 @@ var pos = {
 		positionMarker.setMap(map);
 
 		gps_start=1;
-		startMarker.setPosition(pos);
-		startMarker.setMap(map);
+		myMap.geoObjects.remove(multiRoute);
+		myMap.geoObjects.remove(multiRoute2);
+		myMap.geoObjects.remove(startMarker);
+		myMap.geoObjects.remove(endMarker);
+		myMap.geoObjects.remove(thirdmarker);
+		startMarker = new ymaps.Placemark(pos, {hintContent: 'სტარტი', balloonContent: 'სტარტი'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_start.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+		myMap.geoObjects.add(startMarker);
 
 		geocodeLocation(pos, infoWindow, 'startMarker');
 //		infoWindow.open(map, startMarker);
 	    
-		map.setCenter(pos);
+		myMap.setCenter(pos);
 		}
 
     // programis dastartva

@@ -270,7 +270,7 @@ function setme()
 	console.log("setme");
     if (positionMarker !== undefined) 
 		{
-        map.panTo(positionMarker.getPosition());
+        myMap.panTo(positionMarker.geometry.getCoordinates());
         //geocodeLocation(positionMarker.getPosition(), infoWindow, 'positionMarker', state === 0 ? 'startMarker' : 'endMarker');
 
 //        infoWindow.open(map, positionMarker);
