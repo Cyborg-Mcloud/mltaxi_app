@@ -105,7 +105,9 @@ td {
 		<div id='mainw' style='position:absolute; left:0px; top:0px; width:600px; height:600px; '>
 			<!--																	mtavari ruka -->
 			<div id="gmap"  style='position:absolute; left:0px; top:0px; height:600px; width:365px; display:block;'></div>
-		    <script async defer         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFY47FE__z9AvRLBoYG0T2XeOTiHdwzOQ&callback=initMap&language=ka&libraries=places&region=GE"></script>
+		  
+			
+			 <script src="https://api-maps.yandex.ru/2.1/?lang=ka_GE" type="text/javascript"></script>
 		</div>
 		
 		<!--							taxi mosulia ekrani -->
@@ -329,5 +331,9 @@ td {
 </div>
 
 <script src="js/ui.js"></script>
+<script>
+
+ymaps.ready(initMap);
+</script>
 </body>
 </html>

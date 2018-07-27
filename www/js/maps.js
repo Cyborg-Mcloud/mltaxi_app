@@ -1,399 +1,262 @@
-
+	var myMap;
 var infoWindow, tempMarker, geocoder;
 var dirService, dirRender;
 var startMarker, endMarker, thirdmarker, carMarker, positionMarker;
 var startPosListener, endPosListener, selPosListener;
 var START_ICON, END_ICON, THIRD_END_ICON;
 
-function geocodeLocation(position, infoWindow, markerName) {
-    console.log("geocodeLocation")
-    geocoder.geocode({
-        latLng: position
-    }, function (responses) 
-		{
-        console.log("geocodeLocation: "+ markerName )
-        if (responses && responses.length > 0) {
-            console.log(responses[0].formatted_address)
-            infoWindow.setContent(getInfoContent(responses[0].formatted_address));
-			myaddr=""+responses[0].formatted_address;
-			myaddr=myaddr.replace(", საქართველო","");
-			myaddr=myaddr.replace("საქართველო","");
+var city_bounds=new Array();
 
-			if (state==0)
-				{
-				document.getElementById("pac-input").value=myaddr;
-				}
-			else if (state==1)
-				{
-				console.log("chemi kargi movtyan");
-				document.getElementById("pac-input2").value=myaddr;
-				}
-			else if (state==2)
-				{
-				document.getElementById("pac-input3").value=myaddr;
-				}
-			} 
-		else 
-			{
-      //      infoWindow.setContent(getInfoContent(markerName));
-			console.log("position not received");
-		    }
+city_bounds[0]=new Array();
+city_bounds[1]=new Array();
+city_bounds[0][0]=42.291406;
+city_bounds[0][1]=42.624550;
+city_bounds[1][0]=42.205379;
+city_bounds[1][1]=42.745228;
 
-    });
-}
-
-function initMap() 
+function initMap(ymaps) 
 	{
-
-
-    var position = {lat: MyLat, lng: MyLong};
-
-    map = new google.maps.Map(document.getElementById('gmap'), {
-        zoom: 18,
-        center: position,
-        zIndex: 70,
-        fullscreenControl: false,
-        streetViewControl: false,
-        mapTypeControl: false,
-		disableDefaultUI: true
-
-    });
-
-    geocoder = new google.maps.Geocoder();
-    dirRender = new google.maps.DirectionsRenderer({suppressMarkers: true});
-    dirService = new google.maps.DirectionsService();
-    START_ICON = {
-        url: "resources/pin_start.svg", // url
-        scaledSize: new google.maps.Size(30, 38), // size
-        origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(15, 30), // anchor
-        ratation: 30
-    };
-    END_ICON = {
-        url: "resources/pin_end.svg", // url
-        scaledSize: new google.maps.Size(30, 38), // size
-        origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(15, 30), // anchor
-        ratation: 30
-    };
-	THIRD_END_ICON = {
-        url: "resources/pin_red.svg", // url
-        scaledSize: new google.maps.Size(30, 38), // size
-        origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(15, 30), // anchor
-        ratation: 30
-    };
-    var myicon = {
-        url: "resources/pin_start.svg", // url
-        scaledSize: new google.maps.Size(30, 38), // size
-        origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(15, 30), // anchor
-        ratation: 30
-    };
-
-    var caricon = {
-        url: "resources/logo.svg", // url
-        scaledSize: new google.maps.Size(50, 50), // size
-        origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(25, 25) // anchor
-    };
-    var gpsIcon = {
-        url: "resources/cursor.svg", // url
-        scaledSize: new google.maps.Size(30, 38), // size
-        origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(15, 30) // anchor
-
-
-    };
-    startMarker = new google.maps.Marker({
-        icon: START_ICON,
-        map: map
-    });
-    endMarker = new google.maps.Marker({
-        icon: END_ICON, map: map
-    });
-    thirdmarker = new google.maps.Marker({
-        icon: THIRD_END_ICON, map: map
-    });
-
-	
-	carMarker = new google.maps.Marker({
-        icon: caricon, map: map
-    });
-    positionMarker = new google.maps.Marker({
-        position: position,
-        map: map,
-        icon: gpsIcon,
-        optimized: false
-    });
-    infoWindow = new google.maps.InfoWindow({content: getInfoContent('')});
-    tempMarker = new google.maps.Marker();
-
-    selPosListener = map.addListener('click', function (e) {
-		console.log("aqedan "+state);
-        geocodeOnClick(e);
-       // infoWindow.open(map, tempMarker);
-    });
-
-	positionMarker.addListener('click', function () {
-      //  map.setOptions({zoom: map.zoom + 2, center: position});
-	   geocodeOnClick(e);
-    });
-    setState(0);
-
-    var card = document.getElementById('pac-card');
+	myMap = new ymaps.Map("gmap", {center: [MyLat, MyLong], zoom: 14}, {searchControlProvider: 'yandex#search'});
+	var card = document.getElementById('pac-card');
     var input = document.getElementById('pac-input');
     var input2 = document.getElementById('pac-input2');
     var input3 = document.getElementById('pac-input3');
-
     var strictBounds = document.getElementById('strict-bounds-selector');
 
+	
+	var suggestView = new ymaps.SuggestView(input,{ boundedBy: city_bounds, results: 7});
+	var suggestView1 = new ymaps.SuggestView(input2,{ boundedBy:city_bounds, results: 7});
+	var suggestView2 = new ymaps.SuggestView(input3,{ boundedBy: city_bounds, results: 7});
 
-//    map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    var autocomplete2 = new google.maps.places.Autocomplete(input2);
-    var autocomplete3 = new google.maps.places.Autocomplete(input3);
-    autocomplete.bindTo('bounds', map);
-	autocomplete2.bindTo('bounds', map);
-	autocomplete3.bindTo('bounds', map);
-  
-	autocomplete.addListener('place_changed', function () {
-        // infoWindow.close();
-        tempMarker.setVisible(false);
-        var place = autocomplete.getPlace();
-        if (!place.geometry) {
-            // User entered the name of a Place that was not suggested and
-            // pressed the Enter key, or the Place Details request failed.
-            window.alert("No details available for input: '" + place.name + "'");
-            return;
-        }
+	suggestView.events.add('select', function (e) {
+		console.log(e.get('item').value);
+		mgeocode(e.get('item').value);
+		});
+	suggestView1.events.add('select', function (e) {
+		console.log(e.get('item').value);
+		mgeocode(e.get('item').value);
+		});
+	suggestView2.events.add('select', function (e) {
+		console.log(e.get('item').value);
+		mgeocode(e.get('item').value);
+		});
 
-        // If the place has a geometry, then present it on a map.
-        if (place.geometry.viewport) {
-            map.fitBounds(place.geometry.viewport);
-        } else {
-            map.setCenter(place.geometry.location);
-        //    map.setZoom(17); 
+	myMap.events.add('click', function (e) {console.log("aqedan "+state); geocodeOnClick(e);   });
+	myicon = new ymaps.Placemark([42.24, 42.69], {hintContent: 'ჩემიიკონკა', balloonContent: 'ჩემიიკონკა'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_start.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+	carMarker = new ymaps.Placemark([42.24, 42.69], {hintContent: 'მანქანა', balloonContent: 'მანქანა'}, {iconLayout: 'default#image', iconImageHref: 'resources/logo.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+	positionMarker = new ymaps.Placemark([42.24, 42.69], {hintContent: 'ჯიპიესი', balloonContent: 'ჯიპიესი'}, {iconLayout: 'default#image', iconImageHref: 'resources/Clustericon.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+	myMap.geoObjects.add(positionMarker);
+	setState(0);
+	}
+
+function mgeocode(addr)
+	{
+	console.log(myMap.getBounds());
+//{ boundedBy: myMap.getBounds(), strictBounds: true, results: 1}
+	var myGeocoder = ymaps.geocode(addr);
+	myGeocoder.then(
+		function (res) {
+			var coords=res.geoObjects.get(0).geometry.getCoordinates();
+			var  bounds = res.geoObjects.get(0).properties.get('boundedBy');
+			if (state==0)
+				{
+				myMap.geoObjects.remove(multiRoute);
+				myMap.geoObjects.remove(multiRoute2);
+				myMap.geoObjects.remove(startMarker);
+				myMap.geoObjects.remove(endMarker);
+				myMap.geoObjects.remove(thirdmarker);
+				startMarker = new ymaps.Placemark(coords, {hintContent: 'სტარტი', balloonContent: 'სტარტი'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_start.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+				myMap.geoObjects.add(startMarker);
+				set_input_value(document.getElementById("pac-input").value,0);
+				document.getElementById("pac-input").blur();
+				myMap.setBounds(bounds, {checkZoomRange: true });
+				}
+	
+			else if (state==1)
+				{
+				myMap.geoObjects.remove(multiRoute);
+				myMap.geoObjects.remove(multiRoute2);
+				myMap.geoObjects.remove(endMarker);
+				myMap.geoObjects.remove(thirdmarker);
+
+				endMarker = new ymaps.Placemark(coords, {hintContent: 'დასასრული', balloonContent: 'დასასრული'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_end.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+				myMap.geoObjects.add(endMarker);
+				end_set=1;
+					set_input_value(document.getElementById("pac-input2").value,1);
+				document.getElementById("pac-input2").blur();
+				calcRoute();
+				}
+
+			else if (state==2)
+				{
+				myMap.geoObjects.remove(multiRoute);
+				myMap.geoObjects.remove(multiRoute2);
+				myMap.geoObjects.remove(thirdmarker);
+
+				thirdmarker = new ymaps.Placemark(coords, {hintContent: 'დასასრული', balloonContent: 'დასასრული'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_red.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+				myMap.geoObjects.add(thirdmarker);
 		
-				startMarker.setPosition(place.geometry.location);
-				startMarker.setMap(map);
-				geocodeLocation(startMarker.getPosition(), infoWindow, 'startMarker');
-//				infoWindow.open(map, startMarker);
-			
-
-        }
-        //tempMarker.setPosition(place.geometry.location);
-		geocodeOnClick({latLng: place.geometry.location});
-
-        // geocodePosition(place.geometry.location, currentField);
-        tempMarker.setVisible(true);
-        var address = '';
-        if (place.address_components) {
-            address = [
-                (place.address_components[0] && place.address_components[0].short_name || ''),
-                (place.address_components[1] && place.address_components[1].short_name || ''),
-                (place.address_components[2] && place.address_components[2].short_name || '')
-            ].join(' ');
-        }
-
-        // infoWindowContent.children['place-icon'].src = place.icon;
-        // infoWindowContent.children['place-name'].textContent = place.name;
-        // infoWindowContent.children['place-address'].textContent = address;
-//        infoWindow.open(map, tempMarker);
-    });
-
-	autocomplete2.addListener('place_changed', function () 
-		{
-        // infoWindow.close();
-        tempMarker.setVisible(false);
-        var place = autocomplete2.getPlace();
-        if (!place.geometry) {
-            // User entered the name of a Place that was not suggested and
-            // pressed the Enter key, or the Place Details request failed.
-            window.alert("No details available for input: '" + place.name + "'");
-            return;
-        }
-
-        // If the place has a geometry, then present it on a map.
-        if (place.geometry.viewport) 
-			{
-            map.fitBounds(place.geometry.viewport);
-			}
-		else 
-			{
-            map.setCenter(place.geometry.location);
-           // map.setZoom(17); 
-			if (state==1)
-				{
-				endMarker.setPosition(place.geometry.location);
-				endMarker.setMap(map);
-				end_set=1;
-				}
-			else if (state==2)
-				{
-				thirdmarker.setPosition(place.geometry.location);
-				thirdmarker.setMap(map);
 				end_set=2;
+			//	geocodeLocation(thirdmarker.getPosition(), infoWindow, 'thirdmarker');
+	//			infoWindow.open(map, endMarker);
+	set_input_value(document.getElementById("pac-input3").value,2);
+				document.getElementById("pac-input3").blur();
+				calcRoute();
 				}
-
+	
 			
-			geocodeLocation(endMarker.getPosition(), infoWindow, 'endMarker');
-			//infoWindow.open(map, endMarker);
-			}
-		geocodeOnClick({latLng: place.geometry.location});
-
-        // geocodePosition(place.geometry.location, currentField);
-        tempMarker.setVisible(true);
-        var address = '';
-        if (place.address_components) {
-            address = [
-                (place.address_components[0] && place.address_components[0].short_name || ''),
-                (place.address_components[1] && place.address_components[1].short_name || ''),
-                (place.address_components[2] && place.address_components[2].short_name || '')
-            ].join(' ');
-        }
-
-        // infoWindowContent.children['place-icon'].src = place.icon;
-        // infoWindowContent.children['place-name'].textContent = place.name;
-        // infoWindowContent.children['place-address'].textContent = address;
-//        infoWindow.open(map, tempMarker);
-    });
-
-	autocomplete3.addListener('place_changed', function () 
-		{
-        // infoWindow.close();
-        tempMarker.setVisible(false);
-        var place = autocomplete3.getPlace();
-        if (!place.geometry) {
-            // User entered the name of a Place that was not suggested and
-            // pressed the Enter key, or the Place Details request failed.
-            window.alert("No details available for input: '" + place.name + "'");
-            return;
-        }
-
-        // If the place has a geometry, then present it on a map.
-        if (place.geometry.viewport) 
-			{
-            map.fitBounds(place.geometry.viewport);
-			}
-		else 
-			{
-            map.setCenter(place.geometry.location);
-           // map.setZoom(17); 
-			if (state==1)
-				{
-				endMarker.setPosition(place.geometry.location);
-				endMarker.setMap(map);
-				end_set=1;
-				}
-			else if (state==2)
-				{
-				thirdmarker.setPosition(place.geometry.location);
-				thirdmarker.setMap(map);
-				end_set=2;
-				}
-
-
-			geocodeLocation(endMarker.getPosition(), infoWindow, 'thirdmarker');
-			//infoWindow.open(map, endMarker);
-			}
-		geocodeOnClick({latLng: place.geometry.location});
-
-        // geocodePosition(place.geometry.location, currentField);
-        tempMarker.setVisible(true);
-        var address = '';
-        if (place.address_components) {
-            address = [
-                (place.address_components[0] && place.address_components[0].short_name || ''),
-                (place.address_components[1] && place.address_components[1].short_name || ''),
-                (place.address_components[2] && place.address_components[2].short_name || '')
-            ].join(' ');
-        }
-
-        // infoWindowContent.children['place-icon'].src = place.icon;
-        // infoWindowContent.children['place-name'].textContent = place.name;
-        // infoWindowContent.children['place-address'].textContent = address;
-//        infoWindow.open(map, tempMarker);
-    });
-
-
-
-
-}
+		},
+		function (err) {
+			// error handling
+		}
+	);
+	}
 
 function geocodeOnClick(e) 
 	{
-		console.log("geocodeOnClick: "+mystatus+ " / "+state);
-    // infoWindow.close();
-	if (mystatus==0)
+	console.log("geocodeOnClick: "+mystatus+ " / "+state);
+   if (mystatus==0)
 		{
+		var coords = e.get('coords');
 		if (state==0)
 			{
-			startMarker.setPosition(e.latLng);
-			startMarker.setMap(map);
-			geocodeLocation(startMarker.getPosition(), infoWindow, 'startMarker');
+
+			myMap.geoObjects.remove(multiRoute);
+			myMap.geoObjects.remove(multiRoute2);
+			myMap.geoObjects.remove(startMarker);
+			myMap.geoObjects.remove(endMarker);
+			myMap.geoObjects.remove(thirdmarker);
+
+
+			startMarker = new ymaps.Placemark(coords, {hintContent: 'სტარტი', balloonContent: 'სტარტი'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_start.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+			myMap.geoObjects.add(startMarker);
+
+			startMarker.properties.set({
+				balloonContent: getAddress(startMarker.geometry.getCoordinates() , 0)
+				});
+			console.log(startMarker.geometry.getCoordinates());
+			document.getElementById("pac-input").value=getAddress(startMarker.geometry.getCoordinates(), 0 );
+			//geocodeLocation(startMarker.getPosition(), infoWindow, 'startMarker');
 			document.getElementById("pac-input").blur();
 //			infoWindow.open(map, startMarker);
 			}
 		else if (state==1)
 			{
-			endMarker.setPosition(e.latLng);
-			endMarker.setMap(map);	
+
+			myMap.geoObjects.remove(multiRoute);
+			myMap.geoObjects.remove(multiRoute2);
+			myMap.geoObjects.remove(endMarker);
+			myMap.geoObjects.remove(thirdmarker);
+
+
+			endMarker = new ymaps.Placemark(coords, {hintContent: 'დასასრული', balloonContent: 'დასასრული'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_end.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+			myMap.geoObjects.add(endMarker);
+
 			end_set=1;
-			geocodeLocation(endMarker.getPosition(), infoWindow, 'endMarker');
+		//	geocodeLocation(endMarker.getPosition(), infoWindow, 'endMarker');
 //			infoWindow.open(map, endMarker);
+			getAddress(endMarker.geometry.getCoordinates(), 1 );
 			document.getElementById("pac-input2").blur();
-			calcRoute(startMarker.getPosition(), endMarker.getPosition(), dirService, dirRender);
+			calcRoute();
 			}    
 		else if (state==2)
 			{
-			thirdmarker.setPosition(e.latLng);
-			thirdmarker.setMap(map);	
+			myMap.geoObjects.remove(multiRoute);
+			myMap.geoObjects.remove(multiRoute2);
+			myMap.geoObjects.remove(thirdmarker);
+
+			thirdmarker = new ymaps.Placemark(coords, {hintContent: 'დასასრული', balloonContent: 'დასასრული'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_red.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+			myMap.geoObjects.add(thirdmarker);
+	
 			end_set=2;
-			geocodeLocation(thirdmarker.getPosition(), infoWindow, 'thirdmarker');
+		//	geocodeLocation(thirdmarker.getPosition(), infoWindow, 'thirdmarker');
 //			infoWindow.open(map, endMarker);
+			getAddress(thirdmarker.geometry.getCoordinates(), 2 );
 			document.getElementById("pac-input3").blur();
-			calcRoute(startMarker.getPosition(), endMarker.getPosition(), dirService, dirRender);
+			calcRoute();
 			}  
 		}
 	}
 
-function getInfoContent(address) 
+function set_input_value(value, curfield)
 	{
-    return "<div style='text-align: center; color:black'><div>" + address + "</div><br>";
+
+	value=value.replace("край Имеретия, Кутаиси, ","");
+	value=value.replace("край Имеретия","");
+	value=value.replace("Кутаиси","");
+
+	value=value.replace("kray Imeretiya, Kutaisi, ","");
+		value=value.replace("kray Imeretiya, ","");
+
+	value=value.replace("kray Imeretiya","");
+
+	value=value.replace("Kutaisi, ","");
+	value=value.replace("Kutaisi","");
+
+	value=value.replace("Georgia, ","");
+	value=value.replace("Georgia","");
+
+
+	if (curfield==0)
+		{
+		document.getElementById("pac-input").value=value;
+		}
+	else if (curfield==1)
+		{
+		document.getElementById("pac-input2").value=value;
+		}
+	else if (curfield==2)
+		{
+		document.getElementById("pac-input3").value=value;
+		}
+
 	}
+
+ function getAddress(coords,curfield) 
+	 {
+     
+     ymaps.geocode(coords).then(function (res) 
+		 {
+		 console.log(res);
+            var firstGeoObject = res.geoObjects.get(0);
+			console.log("movida");
+			console.log(firstGeoObject);
+			console.log(firstGeoObject.getAddressLine());
+          
+			set_input_value(firstGeoObject.getAddressLine(), curfield);
+
+
+		 return firstGeoObject.getAddressLine();
+        });
+    }
 
 var state = 0;
 const SWITCH_TEXTS = ['დასაწყისის არჩევა', 'დანიშნულების არჩევა', 'თავიდან არჩევა'];
 
 function setState(newState)
 	{
-	//chooseLocation(state);
 	console.log("set state: "+newState);
     state = newState;
-  //  document.getElementById('switchButton').innerHTML = SWITCH_TEXTS[state];
 	if (state==0)
 		{
-		dirRender.setMap(null);
-		endMarker.setMap(null);
-		thirdmarker.setMap(null);
 		end_set=0;
 		document.getElementById("pac-input2").value="";
 		document.getElementById("pac-input3").value="";
 		}
 	else if (state==1)
 		{
-		document.getElementById("add_third").style.display="block";
+
 		}
 	else if (state==2)
 		{
-		calcRoute(startMarker.getPosition(), endMarker.getPosition(), dirService, dirRender);
+		calcRoute();
 		}
 	else if (state==3)
 		{
-		calcRoute(startMarker.getPosition(), endMarker.getPosition(), dirService, dirRender);
+		calcRoute();
 		}
 	}
+
 
 function switchState() 
 	{
@@ -436,109 +299,36 @@ function getPosition(loc) {
 
 var appr_price=0;
 
-function calcRoute(from_loc, to_loc, directionsService, directionsDisplay) 
+function calcRoute() 
 	{
-	var start = from_loc;
-    var end = to_loc;
+	var start = startMarker.geometry;
+	console.log(start);
+	var end = endMarker.geometry;
+	console.log(end);
 	if (document.getElementById("pac-input3").value!="" || end_set==2)
 		{
-		var waypts = [];
-		 waypts.push({
-              location: end,
-              stopover: true
-            });
-		var mtlad_end=thirdmarker.getPosition();
 
-		var request = {
-			origin: start,
-			destination: mtlad_end,
-			waypoints: waypts,
-			optimizeWaypoints: true,
-			travelMode: google.maps.TravelMode.DRIVING,
-			unitSystem:google.maps.UnitSystem.METRIC
-			};
+		var mtlad_end=thirdmarker.geometry;
+		console.log(mtlad_end);
+		myMap.geoObjects.remove(multiRoute);
+		myMap.geoObjects.remove(multiRoute2);
+		multiRoute2 = new ymaps.multiRouter.MultiRoute({
+		referencePoints: [ start, end, mtlad_end ], params: {results: 2} }, {boundsAutoApply: true});
+		myMap.geoObjects.add(multiRoute2);
+
+	
 
 		}
 	else
 		{
-	   var request = {
-			origin: start,
-			destination: end,
-			travelMode: google.maps.TravelMode.DRIVING,
-			unitSystem:google.maps.UnitSystem.METRIC
-			};
+		myMap.geoObjects.remove(multiRoute);
+		myMap.geoObjects.remove(multiRoute2);
+		multiRoute = new ymaps.multiRouter.MultiRoute({
+		referencePoints: [ start, end], params: {results: 2} }, {boundsAutoApply: true});
+		myMap.geoObjects.add(multiRoute);
 		}
-
-  
- 
-    directionsService.route(request, function (response, status) {
-        if (status === google.maps.DirectionsStatus.OK) {
-            var route = response.routes[0].legs[0];
-            addMarker(startMarker, map, getPosition(route.start_location), map.getBounds());
-            addMarker(endMarker, map, getPosition(route.end_location), map.getBounds());
-			var totalDistance = 0;
-			var totalDuration = 0;
-			var legs = response.routes[0].legs;
-			for(var i=0; i<legs.length; ++i) 
-				{
-				totalDistance += legs[i].distance.value;
-				totalDuration += legs[i].duration.value;
-				}
-
-			var metrebi=parseInt((totalDistance/1000)*100)/100;
-			var metrebi_real=parseInt(metrebi*1.12*100)/100;
-			var	tanxa=datvale_pussy(metrebi_real);
-			
-			document.getElementById("dirinfo").innerHTML='<p style="font-size: 20px">'+metrebi_real+'კმ / '+parseInt(tanxa) +"-"+parseInt(tanxa+1)+'₾</p>';
-			document.getElementById("dirinfo_parent").style.display="block";
-//			document.getElementById("call_div").style.bottom="210px";
-//			document.getElementById("car_choose").style.bottom="50px";
-			console.log("varaudis datvla: "+call_class+ " - "+sit_price[call_class]+ " + "+kmprice[call_class]);
-
-			appr_price=parseInt(sit_price[call_class]+(totalDistance/1000)*kmprice[call_class]);
-
-			directionsDisplay.setDirections(response);
-            directionsDisplay.setMap(map);
-        } else {
-            addMarkers(map, [from_loc, to_loc], map.getBounds());
-        }
-    });
-}
-
-function addMarkers(map, markers, bounds) {
-    // Loop through our array of markers & place each one on the map
-
-    addAndGetMarker(map, markers[0], bounds, 'A');
-    addAndGetMarker(map, markers[1], bounds, 'B');
-}
-
-function addMarker(marker, map, position) {
-    var bounds = map.getBounds();
-    bounds.extend(position);
-    marker.setPosition(position);
-    marker.setMap(map);
-    map.fitBounds(bounds);
-}
-
-function addAndGetMarker(map, position, bounds, label, icon) 
-	{
-    console.log("addAndGetMarker: "+position);
-    bounds.extend(position);
-    var marker = new google.maps.Marker({
-        position: {lat: position['lat'], lng: position['lng']},
-        map: map
-    });
-    if (label !== undefined) marker.setLabel(label);
-    if (icon !== undefined) marker.setIcon(icon);
-    console.log("addAndGetMarker: "+marker.position);
-    marker.addListener('click', function () {
-        map.setOptions({zoom: map.zoom + 2, center: position});
-    });
-    // Automatically center the map fitting all markers on the screen
- //   map.fitBounds(bounds);
-
-}
+	}
 
 
 
-//  mapTypeId: 'satellite',
+

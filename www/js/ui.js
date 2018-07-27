@@ -28,7 +28,7 @@ function sel_class(class_sel)
 	
 	if (document.getElementById("pac-input2").value!="")
 		{
-		calcRoute(startMarker.getPosition(), endMarker.getPosition(), dirService, dirRender);
+		calcRoute();
 		}
 	}
 
@@ -513,8 +513,9 @@ function call_taxi() {
 
     if ((mytel != "" && mytel != null) && mytel.length >= 6) 
 		{
-		var start_lat = startMarker.getPosition().lat();
-		var start_lng = startMarker.getPosition().lng();
+		var start_lat = startMarker.geometry._coordinates[0]; 
+	var start_lng =startMarker.geometry._coordinates[1];
+	
 		var end_lat = 0;
 		var end_lng = 0;
 
@@ -543,16 +544,16 @@ function call_taxi() {
 
 		if (end_set==1)
 			{
-			end_lat=endMarker.getPosition().lat();
-			end_lng=endMarker.getPosition().lng();
+			end_lat=endMarker.geometry._coordinates[0]; 
+			end_lng=endMarker.geometry._coordinates[1]; 
 			}
 		else 
 			{appr_price=parseInt(sit_price[call_class]);}
 
 		if (third_str!="")
 			{
-			third_lat=thirdmarker.getPosition().lat();
-			third_lng=thirdmarker.getPosition().lng();
+			third_lat=thirdmarker.geometry._coordinates[0]; 
+			third_lng=thirdmarker.geometry._coordinates[1];
 			}
 
 		
