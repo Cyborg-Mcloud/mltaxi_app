@@ -48,7 +48,7 @@ function initMap(ymaps)
 	carMarker = new ymaps.Placemark([0, 0], {hintContent: 'მანქანა', balloonContent: 'მანქანა'}, {iconLayout: 'default#image', iconImageHref: 'resources/logo.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
 	myMap.geoObjects.add(carMarker);
 
-	positionMarker = new ymaps.Placemark([42.24, 42.69], {hintContent: 'ჯიპიესი', balloonContent: 'ჯიპიესი'}, {iconLayout: 'default#image', iconImageHref: 'resources/Clustericon.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+	positionMarker = new ymaps.Placemark([42.24, 42.69], {hintContent: 'ჯიპიესი', balloonContent: 'ჯიპიესი'}, {iconLayout: 'default#image', iconImageHref: 'resources/cursor.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
 	myMap.geoObjects.add(positionMarker);
 	setState(0);
 	}
