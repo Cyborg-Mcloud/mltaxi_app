@@ -513,7 +513,7 @@ function call_taxi() {
     if ((mytel != "" && mytel != null) && mytel.length >= 6) 
 		{
 		var start_lat = startMarker.geometry._coordinates[0]; 
-	var start_lng =startMarker.geometry._coordinates[1];
+		var start_lng =startMarker.geometry._coordinates[1];
 	
 		var end_lat = 0;
 		var end_lng = 0;

@@ -241,7 +241,7 @@ function MainProg()
             wlat = MyLat;
             setmypos();
 			 var myLatLng = new [ MyLat, MyLong];
-			 myMap.panTo(myLatLng);
+			myMap.panTo(positionMarker.geometry.getCoordinates());
 	        }
 	    }
     navigator.geolocation.getCurrentPosition(onSuccess, onError, {enableHighAccuracy: true, maximumAge: 0});
