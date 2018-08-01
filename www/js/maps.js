@@ -259,7 +259,7 @@ function setState(newState)
 		}
 	else if (state==1)
 		{
-
+		document.getElementById("add_third").style.display="block";
 		}
 	else if (state==2)
 		{
