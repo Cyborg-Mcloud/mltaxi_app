@@ -205,7 +205,7 @@ function set_input_value(value, curfield)
 	value=value.replace("Кутаиси","");
 
 	value=value.replace("kray Imeretiya, Kutaisi, ","");
-		value=value.replace("kray Imeretiya, ","");
+	value=value.replace("kray Imeretiya, ","");
 
 	value=value.replace("kray Imeretiya","");
 
