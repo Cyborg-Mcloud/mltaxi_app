@@ -17,7 +17,7 @@ city_bounds[1][1]=42.745228;
 
 function initMap(ymaps) 
 	{
-	myMap = new ymaps.Map("gmap", {center: [MyLat, MyLong], zoom: 14, controls: []}, {searchControlProvider: 'yandex#search'});
+	myMap = new ymaps.Map("gmap", {center: [MyLat, MyLong], zoom: 14, controls: []}, {searchControlProvider: 'yandex#map'});
 	var card = document.getElementById('pac-card');
     var input = document.getElementById('pac-input');
     var input2 = document.getElementById('pac-input2');
