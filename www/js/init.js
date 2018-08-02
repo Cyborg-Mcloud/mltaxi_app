@@ -154,7 +154,7 @@ function onDeviceReady() {
 	checkConnection();
 
 	document.addEventListener("pause", onPause, false);
-	//document.addEventListener("backbutton", onBackKeyDown, false);
+	document.addEventListener("backbutton", onBackKeyDown, false);
 	//document.addEventListener("menubutton", onMenuDown, false);
 	//document.addEventListener("searchbutton", onSearchDown, false);
 	document.addEventListener("volumedownbutton", onVolumeDown, false);
