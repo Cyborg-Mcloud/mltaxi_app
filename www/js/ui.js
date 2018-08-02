@@ -495,17 +495,17 @@ function isValidInput(input1) {
     return true;
 }
 var end_set=0;
-function call_taxi() {
+function call_taxi() 
+	{
    
     if (mytel == "" || mytel.length < 6) 
 		{
 		 var numbers = /^[0-9]+$/;
-         mytel = prompt("რა ნომერზე დაგიკავშირდეთ?");
+         mytel = prompt("რა ნომერზე დაგიკავშირდეთ?", "+995");
 		 if (mytel.length<9 || !inputtxt.value.match(numbers))
-      
-			 {	
-				mytel = prompt("გთხოვთ სწორად შეიყვანოთ ტელეფონის ნომერი");
-			 }	
+			{	
+			mytel = prompt("გთხოვთ სწორად შეიყვანოთ ტელეფონის ნომერი");
+			}	
          WriteData();
       
     }

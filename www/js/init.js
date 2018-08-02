@@ -29,8 +29,12 @@ function onBackKeyDown()
     if (curwindow == 1) 
 		{
         show_map();
-    }
-}
+		}
+	else
+		{
+		slider_change();
+		}
+	}
 
 function onMenuDown() {
     if (curwindow == 0) {
