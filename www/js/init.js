@@ -810,16 +810,9 @@ function onResume() {
 }
 
 
-function onSuccess(position) {
-   
-	
-	
-    
+function onSuccess(position) 
+	{
     // infoWindow.setContent(getInfoContent('positionMarker'));
- 
-
-	
-
     nogps = 0;
 	console.log("GPS on success");
     document.getElementById("GPS_search_screen").style.display = "none";
@@ -847,7 +840,7 @@ function onSuccess(position) {
 		{
 		// gps-is pirveli gashveba
 
-
+		state=0;
 		gps_start=1;
 		myMap.geoObjects.remove(multiRoute);
 		myMap.geoObjects.remove(multiRoute2);
@@ -861,6 +854,7 @@ function onSuccess(position) {
 //		infoWindow.open(map, startMarker);
 	    
 		myMap.setCenter([position.coords.latitude,position.coords.longitude]);
+		mgeocode([position.coords.latitude,position.coords.longitude]);
 		}
 
     // programis dastartva

@@ -5,7 +5,7 @@ var dirService, dirRender;
 var startMarker, endMarker, thirdmarker, carMarker, positionMarker;
 var startPosListener, endPosListener, selPosListener;
 var START_ICON, END_ICON, THIRD_END_ICON;
-
+var suggestView, suggestView1,suggestView2;
 var city_bounds=new Array();
 
 city_bounds[0]=new Array();
@@ -35,21 +35,26 @@ function initMap(ymaps)
 	myMap.controls.remove("rulerControl");
 	myMap.controls.remove("routeEditor");
 	
-	var suggestView = new ymaps.SuggestView(input,{ boundedBy: city_bounds, results: 7});
-	var suggestView1 = new ymaps.SuggestView(input2,{ boundedBy:city_bounds, results: 7});
-	var suggestView2 = new ymaps.SuggestView(input3,{ boundedBy: city_bounds, results: 7});
+	suggestView = new ymaps.SuggestView(input,{ boundedBy: city_bounds, results: 3});
+	suggestView1 = new ymaps.SuggestView(input2,{ boundedBy: city_bounds, results: 3});
+	suggestView2 = new ymaps.SuggestView(input3,{ boundedBy: city_bounds, results: 3});
+
+
 
 	suggestView.events.add('select', function (e) {
 		console.log(e.get('item').value);
 		mgeocode(e.get('item').value);
+		suggestView.state.set('open', false);
 		});
 	suggestView1.events.add('select', function (e) {
 		console.log(e.get('item').value);
 		mgeocode(e.get('item').value);
+		suggestView1.state.set('open', false);
 		});
 	suggestView2.events.add('select', function (e) {
 		console.log(e.get('item').value);
 		mgeocode(e.get('item').value);
+		suggestView2.state.set('open', false);
 		});
 
 	myMap.events.add('click', function (e) {console.log("aqedan "+state); geocodeOnClick(e);   });
@@ -256,14 +261,17 @@ function setState(newState)
 		end_set=0;
 		document.getElementById("pac-input2").value="";
 		document.getElementById("pac-input3").value="";
+		suggestView.state.set('open', true);
 		}
 	else if (state==1)
 		{
 		document.getElementById("add_third").style.display="block";
+				suggestView1.state.set('open', true);
 		}
 	else if (state==2)
 		{
 		calcRoute();
+				suggestView2.state.set('open', true);
 		}
 	else if (state==3)
 		{

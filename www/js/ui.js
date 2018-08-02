@@ -32,6 +32,23 @@ function sel_class(class_sel)
 		}
 	}
 
+
+function pacblur(pacid)
+	{
+	if (pacid==1)
+		{
+		suggestView.state.set('open', false);
+		}
+	else if (pacid==2)
+		{
+		suggestView1.state.set('open', false);
+		}
+	else if (pacid==3)
+		{
+		suggestView2.state.set('open', false);
+		}
+	}
+
 slidepos=1;
 function slider_change()
 	{
