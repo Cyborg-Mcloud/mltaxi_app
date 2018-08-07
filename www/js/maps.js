@@ -89,6 +89,7 @@ function mgeocode(addr)
 				set_input_value(document.getElementById("pac-input").value,0);
 				document.getElementById("pac-input").blur();
 				myMap.setBounds(bounds, {checkZoomRange: true });
+				close_all();
 				}
 	
 			else if (state==1)
@@ -104,6 +105,7 @@ function mgeocode(addr)
 					set_input_value(document.getElementById("pac-input2").value,1);
 				document.getElementById("pac-input2").blur();
 				calcRoute();
+				close_all();
 				}
 
 			else if (state==2)
@@ -121,6 +123,7 @@ function mgeocode(addr)
 	set_input_value(document.getElementById("pac-input3").value,2);
 				document.getElementById("pac-input3").blur();
 				calcRoute();
+				close_all();
 				}
 	
 			
@@ -158,6 +161,7 @@ function geocodeOnClick(e)
 			//geocodeLocation(startMarker.getPosition(), infoWindow, 'startMarker');
 			document.getElementById("pac-input").blur();
 //			infoWindow.open(map, startMarker);
+			setTimeout("close_all();",500);
 			}
 		else if (state==1)
 			{
@@ -177,6 +181,7 @@ function geocodeOnClick(e)
 			getAddress(endMarker.geometry.getCoordinates(), 1 );
 			document.getElementById("pac-input2").blur();
 			calcRoute();
+						setTimeout("close_all();",500);
 			}    
 		else if (state==2)
 			{
@@ -193,6 +198,7 @@ function geocodeOnClick(e)
 			getAddress(thirdmarker.geometry.getCoordinates(), 2 );
 			document.getElementById("pac-input3").blur();
 			calcRoute();
+						setTimeout("close_all();",500);
 			}  
 		}
 	}
@@ -323,7 +329,7 @@ function calcRoute()
 		myMap.geoObjects.remove(multiRoute);
 		myMap.geoObjects.remove(multiRoute2);
 		multiRoute2 = new ymaps.multiRouter.MultiRoute({
-		referencePoints: [ start, end, mtlad_end ], params: {results: 2} }, {boundsAutoApply: true});
+		referencePoints: [ start, end, mtlad_end ], params: {results: 2} }, {boundsAutoApply: true, wayPointVisible: false});
 		myMap.geoObjects.add(multiRoute2);
 	
 		multiRoute2.model.events.add("requestsuccess", function (event) {
@@ -341,7 +347,7 @@ function calcRoute()
 		myMap.geoObjects.remove(multiRoute);
 		myMap.geoObjects.remove(multiRoute2);
 		multiRoute = new ymaps.multiRouter.MultiRoute({
-		referencePoints: [ start, end], params: {results: 2} }, {boundsAutoApply: true});
+		referencePoints: [ start, end], params: {results: 2} }, {boundsAutoApply: true, wayPointVisible: false});
 		myMap.geoObjects.add(multiRoute);
 		multiRoute.model.events.add("requestsuccess", function (event) {
 

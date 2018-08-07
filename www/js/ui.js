@@ -521,13 +521,21 @@ function call_taxi()
          mytel = prompt("რა ნომერზე დაგიკავშირდეთ?", "+995");
 		 if (mytel.length<9 || !inputtxt.value.match(numbers))
 			{	
-			mytel = prompt("გთხოვთ სწორად შეიყვანოთ ტელეფონის ნომერი");
+			mytel = prompt("გთხოვთ სწორად შეიყვანოთ ტელეფონის ნომერი", "+995");
 			}	
-         WriteData();
+		if ((mytel != "" && mytel != null) && mytel.length > 6 && mytel!="+995") 
+			{
+			var ka=mytel.replace("+995","");
+			if (ka==mytel)
+				{
+				mytel="+995"+mytel;
+				}
+			WriteData();
+			}
       
-    }
+		}
 
-    if ((mytel != "" && mytel != null) && mytel.length >= 6) 
+    if ((mytel != "" && mytel != null) && mytel.length > 6 && mytel!="+995") 
 		{
 		var start_lat = startMarker.geometry._coordinates[0]; 
 		var start_lng =startMarker.geometry._coordinates[1];
@@ -574,19 +582,22 @@ function call_taxi()
 
 		
 
-        if (MyUser !== "nouser" && MyUser !== "") {
+        if (MyUser !== "nouser" && MyUser !== "") 
+			{
             url = "http://mltaxi.ge/call.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&class="+call_class+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str+"&thirdlat=" + third_lat + "&thirdlng=" + third_lng+"&third_str="+third_str+"&varaudi="+appr_price;
-        }
-        else {
+			}
+        else 
+			{
             url = "http://mltaxi.ge/call.php?lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&class="+call_class+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str+"&thirdlat=" + third_lat + "&thirdlng=" + third_lng+"&third_str="+third_str+"&varaudi="+appr_price;
-        }
+			}
         callingtaxi = 1;
         console.log("taxi call: " + url);
         gamehttp.open('GET', url, true);
         gamehttp.send(null);
-
-    }
-}
+		}
+	else
+		{alert("თქვენ არასწორად შეიყვანეთ ტელეფონი, გამოძახება შეუძლებელია");}
+	}
 
 
 function logout() {
@@ -632,4 +643,22 @@ function close_end_info()
 	tanxa=0;
 	document.getElementById("end_screen").style.display="none";
 
+	}
+
+var closed_once=0;
+function close_all()
+	{
+	console.log("closing");
+	suggestView.state.set({open: false,panelClosed: true, items: []});
+	suggestView1.state.set({open: false,panelClosed: true, items: []});
+	suggestView2.state.set({open: false,panelClosed: true, items: []});
+	if (closed_once==0)
+		{
+		setTimeout("close_all();",1000);
+		closed_once=1;
+		}
+	else
+		{
+		closed_once=0;
+		}
 	}
