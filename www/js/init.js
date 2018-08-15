@@ -847,14 +847,15 @@ function onSuccess(position)
 		myMap.geoObjects.remove(startMarker);
 		myMap.geoObjects.remove(endMarker);
 		myMap.geoObjects.remove(thirdmarker);
-		startMarker = new ymaps.Placemark([position.coords.latitude,position.coords.longitude], {hintContent: 'სტარტი', balloonContent: 'სტარტი'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_start.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+		startMarker = new ymaps.Placemark([position.coords.latitude,position.coords.longitude], {hintContent: 'სტარტი', balloonContent: 'სტარტი'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_start.svg', iconImageSize: [30, 30], iconImageOffset: [-15, -30]  });
 		myMap.geoObjects.add(startMarker);
 
 	//	geocodeLocation([position.coords.latitude,position.coords.longitude], infoWindow, 'startMarker');
 //		infoWindow.open(map, startMarker);
 	    
 		myMap.setCenter([position.coords.latitude,position.coords.longitude]);
-		mgeocode([position.coords.latitude,position.coords.longitude]);
+		//mgeocode([position.coords.latitude,position.coords.longitude]);
+		getAddress([position.coords.latitude,position.coords.longitude], 0 );
 		}
 
     // programis dastartva

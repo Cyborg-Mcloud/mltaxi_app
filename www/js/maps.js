@@ -85,7 +85,7 @@ function mgeocode(addr)
 				myMap.geoObjects.remove(startMarker);
 				myMap.geoObjects.remove(endMarker);
 				myMap.geoObjects.remove(thirdmarker);
-				startMarker = new ymaps.Placemark(coords, {hintContent: 'სტარტი', balloonContent: 'სტარტი'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_start.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+				startMarker = new ymaps.Placemark(coords, {hintContent: 'სტარტი', balloonContent: 'სტარტი'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_start.svg', iconImageSize: [30, 30], iconImageOffset: [-15, -30]  });
 				myMap.geoObjects.add(startMarker);
 				set_input_value(document.getElementById("pac-input").value,0);
 				document.getElementById("pac-input").blur();
@@ -100,7 +100,7 @@ function mgeocode(addr)
 				myMap.geoObjects.remove(endMarker);
 				myMap.geoObjects.remove(thirdmarker);
 
-				endMarker = new ymaps.Placemark(coords, {hintContent: 'დასასრული', balloonContent: 'დასასრული'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_end.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+				endMarker = new ymaps.Placemark(coords, {hintContent: 'დასასრული', balloonContent: 'დასასრული'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_end.svg', iconImageSize: [30, 30], iconImageOffset: [-15, -30]  });
 				myMap.geoObjects.add(endMarker);
 				end_set=1;
 					set_input_value(document.getElementById("pac-input2").value,1);
@@ -115,7 +115,7 @@ function mgeocode(addr)
 				myMap.geoObjects.remove(multiRoute2);
 				myMap.geoObjects.remove(thirdmarker);
 
-				thirdmarker = new ymaps.Placemark(coords, {hintContent: 'დასასრული', balloonContent: 'დასასრული'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_red.svg', iconImageSize: [30, 30], iconImageOffset: [-15, 0]  });
+				thirdmarker = new ymaps.Placemark(coords, {hintContent: 'დასასრული', balloonContent: 'დასასრული'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_red.svg', iconImageSize: [30, 30], iconImageOffset: [-15, -30]  });
 				myMap.geoObjects.add(thirdmarker);
 		
 				end_set=2;
