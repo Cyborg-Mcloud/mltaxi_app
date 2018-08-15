@@ -814,7 +814,7 @@ function onSuccess(position)
 	{
     // infoWindow.setContent(getInfoContent('positionMarker'));
     nogps = 0;
-	console.log("GPS on success");
+	console.log("GPS on success: "+gps_start);
     document.getElementById("GPS_search_screen").style.display = "none";
 
     MyLat = position.coords.latitude;

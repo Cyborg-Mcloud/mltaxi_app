@@ -70,7 +70,7 @@ function initMap(ymaps)
 
 function mgeocode(addr)
 	{
-	consloe.log("mgcode");
+	console.log("mgcode: "+addr);
 	console.log(myMap.getBounds());
 //{ boundedBy: myMap.getBounds(), strictBounds: true, results: 1}
 	var myGeocoder = ymaps.geocode(addr);
