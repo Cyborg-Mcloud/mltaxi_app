@@ -121,7 +121,7 @@ function mgeocode(addr)
 				end_set=2;
 			//	geocodeLocation(thirdmarker.getPosition(), infoWindow, 'thirdmarker');
 	//			infoWindow.open(map, endMarker);
-	set_input_value(document.getElementById("pac-input3").value,2);
+				set_input_value(document.getElementById("pac-input3").value,2);
 				document.getElementById("pac-input3").blur();
 				calcRoute();
 				close_all();
@@ -319,12 +319,11 @@ var appr_price=0;
 function calcRoute() 
 	{
 	var start = startMarker.geometry;
-
 	var end = endMarker.geometry;
 
 	if (document.getElementById("pac-input3").value!="" || end_set==2)
 		{
-
+		console.log("long route calc");
 		var mtlad_end=thirdmarker.geometry;
 		console.log(mtlad_end);
 		myMap.geoObjects.remove(multiRoute);
@@ -345,6 +344,7 @@ function calcRoute()
 		}
 	else
 		{
+		console.log("short route calc");
 		myMap.geoObjects.remove(multiRoute);
 		myMap.geoObjects.remove(multiRoute2);
 		multiRoute = new ymaps.multiRouter.MultiRoute({
