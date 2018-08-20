@@ -325,7 +325,7 @@ function calcRoute()
 		{
 		console.log("long route calc");
 		var mtlad_end=thirdmarker.geometry;
-		console.log(mtlad_end);
+		//console.log(mtlad_end);
 		myMap.geoObjects.remove(multiRoute);
 		myMap.geoObjects.remove(multiRoute2);
 		multiRoute2 = new ymaps.multiRouter.MultiRoute({

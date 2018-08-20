@@ -2,6 +2,7 @@ var call_class=1;
 
 function sel_class(class_sel)
 	{
+	console.log("selclass");
 	call_class=class_sel;
 	for (i=1;i<=3 ;i++ )
 		{
