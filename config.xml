@@ -2,8 +2,8 @@
 <widget xmlns:gap="http://phonegap.com/ns/1.0" 
 		id="com.designge.mltaxi" 
 		package="com.designge.mltaxi"
-        version="1.5.2"
-        versionCode="66" 
+        version="1.5.3"
+        versionCode="65" 
 		xmlns="http://www.w3.org/ns/widgets"
 		xmlns:android="http://schemas.android.com/apk/res/android">
     <name>ML Taxi</name>
