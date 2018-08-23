@@ -248,7 +248,7 @@ var win;
 
 
 window.addEventListener('message', function(event) {   
-	console.log(event.data); 
+	//console.log(event.data); 
 	if (event.data=="closeme")
 		{
 		close_iframe();

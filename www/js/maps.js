@@ -325,12 +325,13 @@ function calcRoute()
 		{
 		console.log("long route calc");
 		var mtlad_end=thirdmarker.geometry;
-		//console.log(mtlad_end);
+		console.log(mtlad_end);
 		myMap.geoObjects.remove(multiRoute);
 		myMap.geoObjects.remove(multiRoute2);
+		
 		multiRoute2 = new ymaps.multiRouter.MultiRoute({
-		referencePoints: [ start, end, mtlad_end ], params: {results: 2} }, {boundsAutoApply: true, wayPointVisible: false});
-		myMap.geoObjects.add(multiRoute2);
+		referencePoints: [ start, end ], params: {results: 2} }, {boundsAutoApply: true, wayPointVisible: false});
+		myMap.geoObjects.add(multiRoute2); //, mtlad_end
 	
 		multiRoute2.model.events.add("requestsuccess", function (event) {
 
