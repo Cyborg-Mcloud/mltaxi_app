@@ -334,8 +334,8 @@ function calcRoute()
 		myMap.geoObjects.remove(multiRoute2);
 		
 		multiRoute2 = new ymaps.multiRouter.MultiRoute({
-		referencePoints: [ start, end ], params: {results: 2} }, {boundsAutoApply: true, wayPointVisible: false});
-		myMap.geoObjects.add(multiRoute2); //, mtlad_end
+		referencePoints: [ start, end , mtlad_end], params: {results: 2} }, {boundsAutoApply: true, wayPointVisible: false});
+		myMap.geoObjects.add(multiRoute2); //
 	
 		multiRoute2.model.events.add("requestsuccess", function (event) {
 
