@@ -71,11 +71,11 @@ function initMap(ymaps)
 function mgeocode(addr)
 	{
 	console.log("mgcode: "+addr);
-	console.log(myMap.getBounds());
-//{ boundedBy: myMap.getBounds(), strictBounds: true, results: 1}
+
 	var myGeocoder = ymaps.geocode(addr);
 	myGeocoder.then(
 		function (res) {
+			console.log(res);
 			var coords=res.geoObjects.get(0).geometry.getCoordinates();
 			var  bounds = res.geoObjects.get(0).properties.get('boundedBy');
 			if (state==0)
@@ -90,6 +90,7 @@ function mgeocode(addr)
 				set_input_value(document.getElementById("pac-input").value,0);
 				document.getElementById("pac-input").blur();
 				myMap.setBounds(bounds, {checkZoomRange: true });
+				suggestView.state.set({open: false,panelClosed: true, items: []});
 				close_all();
 				}
 	
@@ -103,9 +104,10 @@ function mgeocode(addr)
 				endMarker = new ymaps.Placemark(coords, {hintContent: 'დასასრული', balloonContent: 'დასასრული'}, {iconLayout: 'default#image', iconImageHref: 'resources/pin_end.svg', iconImageSize: [30, 30], iconImageOffset: [-15, -30]  });
 				myMap.geoObjects.add(endMarker);
 				end_set=1;
-					set_input_value(document.getElementById("pac-input2").value,1);
+				set_input_value(document.getElementById("pac-input2").value,1);
 				document.getElementById("pac-input2").blur();
 				calcRoute();
+				suggestView1.state.set({open: false,panelClosed: true, items: []});
 				close_all();
 				}
 
@@ -119,11 +121,13 @@ function mgeocode(addr)
 				myMap.geoObjects.add(thirdmarker);
 		
 				end_set=2;
+				console.log("movqache");
 			//	geocodeLocation(thirdmarker.getPosition(), infoWindow, 'thirdmarker');
 	//			infoWindow.open(map, endMarker);
 				set_input_value(document.getElementById("pac-input3").value,2);
 				document.getElementById("pac-input3").blur();
 				calcRoute();
+				suggestView2.state.set({open: false,panelClosed: true, items: []});
 				close_all();
 				}
 	
@@ -157,7 +161,7 @@ function geocodeOnClick(e)
 			startMarker.properties.set({
 				balloonContent: getAddress(startMarker.geometry.getCoordinates() , 0)
 				});
-			console.log(startMarker.geometry.getCoordinates());
+		//	console.log(startMarker.geometry.getCoordinates());
 			document.getElementById("pac-input").value=getAddress(startMarker.geometry.getCoordinates(), 0 );
 			//geocodeLocation(startMarker.getPosition(), infoWindow, 'startMarker');
 			document.getElementById("pac-input").blur();
@@ -182,7 +186,7 @@ function geocodeOnClick(e)
 			getAddress(endMarker.geometry.getCoordinates(), 1 );
 			document.getElementById("pac-input2").blur();
 			calcRoute();
-						setTimeout("close_all();",500);
+			setTimeout("close_all();",500);
 			}    
 		else if (state==2)
 			{
@@ -199,7 +203,7 @@ function geocodeOnClick(e)
 			getAddress(thirdmarker.geometry.getCoordinates(), 2 );
 			document.getElementById("pac-input3").blur();
 			calcRoute();
-						setTimeout("close_all();",500);
+			setTimeout("close_all();",500);
 			}  
 		}
 	}
