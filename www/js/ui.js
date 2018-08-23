@@ -12,7 +12,7 @@ function sel_class(class_sel)
 
 	document.getElementById("carimage"+call_class).className ="circle mb-2 active";
 
-	
+	console.log("movlien");
 	if (document.getElementById("pac-input2").value!="" || document.getElementById("pac-input3").value!="")
 		{
 		console.log("calcing route");
