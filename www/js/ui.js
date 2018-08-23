@@ -247,14 +247,14 @@ function cignorewifi()
 var win;
 
 
-window.addEventListener('message', function(event) {   
+//window.addEventListener('message', function(event) {   
 	//console.log(event.data); 
-	if (event.data=="closeme")
-		{
-		close_iframe();
-		}
+//	if (event.data=="closeme")
+//		{
+//		close_iframe();
+//		}
     
-}); 
+//}); 
 
 function close_iframe()
 	{
