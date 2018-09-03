@@ -320,6 +320,34 @@ function getPosition(loc) {
 
 var appr_price=0;
 
+
+function daamrgvale(tanxa)
+	{
+	
+	var mteli=parseInt(tanxa);
+	var t=tanxa-mteli;
+	if (t>0)
+		{
+		if (t<=0.1  )
+			{
+			tanxa=mteli;
+			}
+		else if (t>0.5 && t<=0.6)
+			{
+			tanxa=mteli+0.5;
+			}
+		else if (t>0.6)
+			{
+			tanxa=mteli+1;
+			}
+		else
+			{
+			tanxa=mteli+0.5;
+			}
+		}
+	return tanxa;
+	}
+
 function calcRoute() 
 	{
 	var start = startMarker.geometry;
@@ -342,9 +370,11 @@ function calcRoute()
 			console.log("mroute2: "+multiRoute2.getRoutes().get(0).properties.get('distance').value);
 			totalDistance=multiRoute2.getRoutes().get(0).properties.get('distance').value;
 
-			appr_price=parseInt(sit_price[call_class]+(totalDistance/1000)*kmprice[call_class]);
+			appr_price=sit_price[call_class]+(totalDistance/1000)*kmprice[call_class];
+			appr_price=daamrgvale(appr_price);
+
 			console.log("distance: "+totalDistance+", appr_price: "+appr_price);
-			document.getElementById("dirinfo").innerHTML='<p style="font-size: 20px">'+parseInt(totalDistance/1000)+'კმ / '+parseInt(appr_price) +"-"+parseInt(appr_price+1)+'₾</p>';
+			document.getElementById("dirinfo").innerHTML='<p style="font-size: 20px">'+parseInt(totalDistance/1000)+'კმ / '+appr_price+'₾</p>';
 			document.getElementById("dirinfo_parent").style.display="block";
 			});
 
@@ -362,9 +392,11 @@ function calcRoute()
 			console.log("mroute: "+multiRoute.getRoutes().get(0).properties.get('distance').value);
 			totalDistance=multiRoute.getRoutes().get(0).properties.get('distance').value;
 
-			appr_price=parseInt(sit_price[call_class]+(totalDistance/1000)*kmprice[call_class]);
+			appr_price=sit_price[call_class]+(totalDistance/1000)*kmprice[call_class];
+			appr_price=daamrgvale(appr_price);
+
 			console.log("distance: "+totalDistance+", appr_price: "+appr_price);
-			document.getElementById("dirinfo").innerHTML='<p style="font-size: 20px">'+parseInt(totalDistance/1000)+'კმ / '+parseInt(appr_price) +"-"+parseInt(appr_price+1)+'₾</p>';
+			document.getElementById("dirinfo").innerHTML='<p style="font-size: 20px">'+parseInt(totalDistance/1000)+'კმ / '+appr_price+'₾</p>';
 			document.getElementById("dirinfo_parent").style.display="block";
 			});
 		}
