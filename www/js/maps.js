@@ -370,7 +370,7 @@ function calcRoute()
 			console.log("mroute2: "+multiRoute2.getRoutes().get(0).properties.get('distance').value);
 			totalDistance=multiRoute2.getRoutes().get(0).properties.get('distance').value;
 
-			appr_price=sit_price[call_class]+(totalDistance/1000)*kmprice[call_class];
+			appr_price=sit_price[call_class]+(totalDistance/1000-1)*kmprice[call_class];
 			appr_price=daamrgvale(appr_price);
 
 			console.log("distance: "+totalDistance+", appr_price: "+appr_price);
@@ -392,7 +392,7 @@ function calcRoute()
 			console.log("mroute: "+multiRoute.getRoutes().get(0).properties.get('distance').value);
 			totalDistance=multiRoute.getRoutes().get(0).properties.get('distance').value;
 
-			appr_price=sit_price[call_class]+(totalDistance/1000)*kmprice[call_class];
+			appr_price=sit_price[call_class]+(totalDistance/1000-1)*kmprice[call_class];
 			appr_price=daamrgvale(appr_price);
 
 			console.log("distance: "+totalDistance+", appr_price: "+appr_price);
