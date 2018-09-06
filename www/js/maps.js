@@ -226,6 +226,13 @@ function set_input_value(value, curfield)
 	value=value.replace("Georgia, ","");
 	value=value.replace("Georgia","");
 
+	value=value.replace("საქართველო, იმერეთი, ქუთაისი","");
+	value=value.replace("იმერეთი,","");
+	value=value.replace("კუთაისი,","");
+	value=value.replace("საქართველო,","");
+
+
+
 
 	if (curfield==0)
 		{
@@ -277,12 +284,12 @@ function setState(newState)
 	else if (state==1)
 		{
 		document.getElementById("add_third").style.display="block";
-				suggestView1.state.set('open', true);
+		suggestView1.state.set('open', true);
 		}
 	else if (state==2)
 		{
 		calcRoute();
-				suggestView2.state.set('open', true);
+		suggestView2.state.set('open', true);
 		}
 	else if (state==3)
 		{
@@ -290,26 +297,6 @@ function setState(newState)
 		}
 	}
 
-
-function switchState() 
-	{
-	console.log("switch state: "+state);
-    if (state === 1 && (startMarker.getPosition() === undefined || endMarker.getPosition() === undefined)) 
-		{
-        setState(0);
-        return;
-		}
-    setState((state + 1) % 3);
-
-	}
-
-function chooseLocation(curstate) 
-	{
-	if (curstate==0)
-		{
-
-		}
-	}
 
 function getPosition(loc) {
     return {
