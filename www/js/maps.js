@@ -80,6 +80,7 @@ function mgeocode(addr)
 			var  bounds = res.geoObjects.get(0).properties.get('boundedBy');
 			if (state==0)
 				{
+				console.log("steiti nolia");
 				myMap.geoObjects.remove(multiRoute);
 				myMap.geoObjects.remove(multiRoute2);
 				myMap.geoObjects.remove(startMarker);
@@ -92,10 +93,12 @@ function mgeocode(addr)
 				myMap.setBounds(bounds, {checkZoomRange: true });
 				suggestView.state.set({open: false,panelClosed: true, items: []});
 				close_all();
+
 				}
 	
 			else if (state==1)
 				{
+				console.log("steiti ertia");
 				myMap.geoObjects.remove(multiRoute);
 				myMap.geoObjects.remove(multiRoute2);
 				myMap.geoObjects.remove(endMarker);
@@ -113,6 +116,7 @@ function mgeocode(addr)
 
 			else if (state==2)
 				{
+				console.log("steiti oria");
 				myMap.geoObjects.remove(multiRoute);
 				myMap.geoObjects.remove(multiRoute2);
 				myMap.geoObjects.remove(thirdmarker);
@@ -225,8 +229,8 @@ function set_input_value(value, curfield)
 
 	value=value.replace("Georgia, ","");
 	value=value.replace("Georgia","");
-
-	value=value.replace("საქართველო, იმერეთი, ქუთაისი","");
+console.log("value: "+value);
+	value=value.replace("საქართველო, იმერეთი, ქუთაისი, ","");
 	value=value.replace("იმერეთი,","");
 	value=value.replace("კუთაისი,","");
 	value=value.replace("საქართველო,","");
