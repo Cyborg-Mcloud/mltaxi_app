@@ -42,17 +42,17 @@ function initMap(ymaps)
 
 
 	suggestView.events.add('select', function (e) {
-		console.log(e.get('item').value);
+		console.log("suggest: " +e.get('item').value);
 		mgeocode(e.get('item').value);
 		suggestView.state.set('open', false);
 		});
 	suggestView1.events.add('select', function (e) {
-		console.log(e.get('item').value);
+		console.log("suggest: " +e.get('item').value);
 		mgeocode(e.get('item').value);
 		suggestView1.state.set('open', false);
 		});
 	suggestView2.events.add('select', function (e) {
-		console.log(e.get('item').value);
+		console.log("suggest: " +e.get('item').value);
 		mgeocode(e.get('item').value);
 		suggestView2.state.set('open', false);
 		});
@@ -75,8 +75,9 @@ function mgeocode(addr)
 	var myGeocoder = ymaps.geocode(addr);
 	myGeocoder.then(
 		function (res) {
-			console.log(res);
+			//console.log(res);
 			var coords=res.geoObjects.get(0).geometry.getCoordinates();
+			console.log(coords);
 			var  bounds = res.geoObjects.get(0).properties.get('boundedBy');
 			if (state==0)
 				{
@@ -167,8 +168,9 @@ function geocodeOnClick(e)
 				});
 		//	console.log(startMarker.geometry.getCoordinates());
 			document.getElementById("pac-input").value=getAddress(startMarker.geometry.getCoordinates(), 0 );
-			//geocodeLocation(startMarker.getPosition(), infoWindow, 'startMarker');
 			document.getElementById("pac-input").blur();
+			//geocodeLocation(startMarker.getPosition(), infoWindow, 'startMarker');
+
 //			infoWindow.open(map, startMarker);
 			setTimeout("close_all();",500);
 			}
