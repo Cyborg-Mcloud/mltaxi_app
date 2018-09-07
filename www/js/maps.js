@@ -152,7 +152,7 @@ function geocodeOnClick(e)
 		var coords = e.get('coords');
 		if (state==0)
 			{
-
+			console.log("geocode, state=0, coords="+coords);
 			myMap.geoObjects.remove(multiRoute);
 			myMap.geoObjects.remove(multiRoute2);
 			myMap.geoObjects.remove(startMarker);
@@ -176,7 +176,7 @@ function geocodeOnClick(e)
 			}
 		else if (state==1)
 			{
-
+			console.log("geocode, state=1, coords="+coords);
 			myMap.geoObjects.remove(multiRoute);
 			myMap.geoObjects.remove(multiRoute2);
 			myMap.geoObjects.remove(endMarker);
@@ -196,6 +196,7 @@ function geocodeOnClick(e)
 			}    
 		else if (state==2)
 			{
+			console.log("geocode, state=2, coords="+coords);
 			myMap.geoObjects.remove(multiRoute);
 			myMap.geoObjects.remove(multiRoute2);
 			myMap.geoObjects.remove(thirdmarker);

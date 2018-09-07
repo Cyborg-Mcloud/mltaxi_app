@@ -23,6 +23,7 @@ function sel_class(class_sel)
 
 function pacblur(pacid)
 	{
+	console.log("pacblur: "+pacid);
 	if (pacid==1)
 		{
 		suggestView.state.set('open', false);
@@ -58,17 +59,20 @@ function slider_change()
 	}
 function sel_green()
 	{
+	console.log("sel_green");
 	document.getElementById("pac-input").focus();
 	}
 
 function sel_orange()
 	{
+	console.log("sel_orange");
 	document.getElementById("pac-input2").focus();
 	}
 
 
 function sel_3rd()
 	{
+		console.log("sel_red");
 	document.getElementById("pac-input3").focus();
 	}
 
