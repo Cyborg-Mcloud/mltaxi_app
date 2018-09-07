@@ -23,6 +23,7 @@ function sel_class(class_sel)
 
 function pacblur(pacid)
 	{
+	return;
 	console.log("pacblur: "+pacid);
 	if (pacid==1)
 		{
