@@ -172,6 +172,7 @@ function geocodeOnClick(e)
 		//	console.log(startMarker.geometry.getCoordinates());
 			document.getElementById("pac-input").value=getAddress(startMarker.geometry.getCoordinates(), 0 );
 			document.getElementById("pac-input").blur();
+			document.getElementById("pac-input2").blur();
 			//geocodeLocation(startMarker.getPosition(), infoWindow, 'startMarker');
 
 //			infoWindow.open(map, startMarker);
@@ -195,6 +196,7 @@ function geocodeOnClick(e)
 //			infoWindow.open(map, endMarker);
 			getAddress(endMarker.geometry.getCoordinates(), 1 );
 			document.getElementById("pac-input2").blur();
+			document.getElementById("pac-input3").blur();
 			calcRoute();
 			setTimeout("close_all();",500);
 			click_through_block=0;
