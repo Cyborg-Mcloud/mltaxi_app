@@ -44,17 +44,17 @@ function initMap(ymaps)
 	suggestView.events.add('select', function (e) {
 		console.log("suggest: " +e.get('item').value);
 		mgeocode(e.get('item').value);
-		suggestView.state.set('open', false);
+		//suggestView.state.set('open', false);
 		});
 	suggestView1.events.add('select', function (e) {
 		console.log("suggest: " +e.get('item').value);
 		mgeocode(e.get('item').value);
-		suggestView1.state.set('open', false);
+		//suggestView1.state.set('open', false);
 		});
 	suggestView2.events.add('select', function (e) {
 		console.log("suggest: " +e.get('item').value);
 		mgeocode(e.get('item').value);
-		suggestView2.state.set('open', false);
+		//suggestView2.state.set('open', false);
 		});
 
 	myMap.events.add('click', function (e) {console.log("aqedan "+state); geocodeOnClick(e);   });
