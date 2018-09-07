@@ -44,17 +44,17 @@ function initMap(ymaps)
 	suggestView.events.add('select', function (e) {
 		console.log("suggest: " +e.get('item').value);
 		mgeocode(e.get('item').value);
-		//suggestView.state.set('open', false);
+		suggestView.state.set('open', false);
 		});
 	suggestView1.events.add('select', function (e) {
 		console.log("suggest: " +e.get('item').value);
 		mgeocode(e.get('item').value);
-		//suggestView1.state.set('open', false);
+		suggestView1.state.set('open', false);
 		});
 	suggestView2.events.add('select', function (e) {
 		console.log("suggest: " +e.get('item').value);
 		mgeocode(e.get('item').value);
-		//suggestView2.state.set('open', false);
+		suggestView2.state.set('open', false);
 		});
 
 	myMap.events.add('click', function (e) {console.log("aqedan "+state); geocodeOnClick(e);   });
@@ -67,11 +67,11 @@ function initMap(ymaps)
 	myMap.geoObjects.add(positionMarker);
 	setState(0);
 	}
-
+var click_through_block=0;
 function mgeocode(addr)
 	{
 	console.log("mgcode: "+addr);
-
+click_through_block=1;
 	var myGeocoder = ymaps.geocode(addr);
 	myGeocoder.then(
 		function (res) {
@@ -81,6 +81,7 @@ function mgeocode(addr)
 			var  bounds = res.geoObjects.get(0).properties.get('boundedBy');
 			if (state==0)
 				{
+
 				console.log("steiti nolia");
 				myMap.geoObjects.remove(multiRoute);
 				myMap.geoObjects.remove(multiRoute2);
@@ -94,7 +95,7 @@ function mgeocode(addr)
 				myMap.setBounds(bounds, {checkZoomRange: true });
 				suggestView.state.set({open: false,panelClosed: true, items: []});
 				close_all();
-
+				click_through_block=0;
 				}
 	
 			else if (state==1)
@@ -113,6 +114,7 @@ function mgeocode(addr)
 				calcRoute();
 				suggestView1.state.set({open: false,panelClosed: true, items: []});
 				close_all();
+								click_through_block=0;
 				}
 
 			else if (state==2)
@@ -134,6 +136,7 @@ function mgeocode(addr)
 				calcRoute();
 				suggestView2.state.set({open: false,panelClosed: true, items: []});
 				close_all();
+				click_through_block=0;
 				}
 	
 			
@@ -173,6 +176,7 @@ function geocodeOnClick(e)
 
 //			infoWindow.open(map, startMarker);
 			setTimeout("close_all();",500);
+			click_through_block=0;
 			}
 		else if (state==1)
 			{
@@ -193,6 +197,7 @@ function geocodeOnClick(e)
 			document.getElementById("pac-input2").blur();
 			calcRoute();
 			setTimeout("close_all();",500);
+			click_through_block=0;
 			}    
 		else if (state==2)
 			{
@@ -211,6 +216,7 @@ function geocodeOnClick(e)
 			document.getElementById("pac-input3").blur();
 			calcRoute();
 			setTimeout("close_all();",500);
+			click_through_block=0;
 			}  
 		}
 	}
@@ -279,29 +285,34 @@ const SWITCH_TEXTS = ['დასაწყისის არჩევა', 'დ�
 
 function setState(newState)
 	{
-	console.log("set state: "+newState);
-    state = newState;
-	if (state==0)
+	if (click_through_block==0)
 		{
-		end_set=0;
-		document.getElementById("pac-input2").value="";
-		document.getElementById("pac-input3").value="";
-		suggestView.state.set('open', true);
+		
+		console.log("set state: "+newState);
+		state = newState;
+		if (state==0)
+			{
+			end_set=0;
+			document.getElementById("pac-input2").value="";
+			document.getElementById("pac-input3").value="";
+			suggestView.state.set('open', true);
+			}
+		else if (state==1)
+			{
+			document.getElementById("add_third").style.display="block";
+			suggestView1.state.set('open', true);
+			}
+		else if (state==2)
+			{
+		//	calcRoute();
+			suggestView2.state.set('open', true);
+			}
+		else if (state==3)
+			{
+		//	calcRoute();
+			}
 		}
-	else if (state==1)
-		{
-		document.getElementById("add_third").style.display="block";
-		suggestView1.state.set('open', true);
-		}
-	else if (state==2)
-		{
-		calcRoute();
-		suggestView2.state.set('open', true);
-		}
-	else if (state==3)
-		{
-		calcRoute();
-		}
+	click_through_block=0;
 	}
 
 
