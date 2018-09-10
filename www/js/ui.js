@@ -512,7 +512,7 @@ function call_taxi()
 		{
 		 var numbers = /^[0-9]+$/;
          mytel = prompt("რა ნომერზე დაგიკავშირდეთ?", "+995");
-		 if (mytel.length<9 || !inputtxt.value.match(numbers))
+		 if (mytel.length<9 || !mytel.value.match(numbers))
 			{	
 			mytel = prompt("გთხოვთ სწორად შეიყვანოთ ტელეფონის ნომერი", "+995");
 			}	
