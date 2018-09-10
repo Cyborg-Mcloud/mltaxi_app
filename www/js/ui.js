@@ -109,7 +109,7 @@ function chat_send()
 	{
     chat_txt = document.getElementById("chat_send_text").value;
     document.getElementById("chat_send_text").value = "";
-    url = "http://mltaxi.ge/chat.php?send=1&myid=" + myid + "&chat_txt=" + chat_txt;
+    url = "http://mltaxi.ge/chat.php?send=1&myid=" + myid + "&chat_txt=" + chat_txt+"&version="+app_version;
     console.log("send chat: " + url);
     gamehttp.open('GET', url, true);
     gamehttp.send(null);
@@ -210,7 +210,7 @@ function change_status(newstat) {
 
 function cancel_call()
 {
-url = "http://mltaxi.ge/user_cancel.php?unique=" + myid;
+url = "http://mltaxi.ge/user_cancel.php?unique=" + myid+"&version="+app_version;
 console.log("taxi cancel: " + url);
 gamehttp.open('GET', url, true);
 gamehttp.send(null);
@@ -219,10 +219,10 @@ gamehttp.send(null);
 
 function chamovdivar() {
     if (MyUser != "nouser" && MyUser != "") {
-        url = "http://mltaxi.ge/chamovdivar.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + MyLat + "&long=" + MyLong + "&unique=" + myid;
+        url = "http://mltaxi.ge/chamovdivar.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + MyLat + "&long=" + MyLong + "&unique=" + myid+"&version="+app_version;
     }
     else {
-        url = "http://mltaxi.ge/chamovdivar.php?lat=" + MyLat + "&long=" + MyLong + "&unique=" + myid;
+        url = "http://mltaxi.ge/chamovdivar.php?lat=" + MyLat + "&long=" + MyLong + "&unique=" + myid+"&version="+app_version;
     }
     console.log("taxi chamovdivar: " + url);
     gamehttp.open('GET', url, true);
@@ -269,7 +269,7 @@ function close_iframe()
 function open_reg_window()
 	{
 	//win=window.open('http://mltaxi.ge/user_reg.php',  '_blank', 'location=yes');
-	url="http://mltaxi.ge/user_reg.php?mytel="+mytel+"&myid=" + myid;
+	url="http://mltaxi.ge/user_reg.php?mytel="+mytel+"&myid=" + myid+"&version="+app_version;
 
 	document.getElementById("myiframe").src=url;
 	document.getElementById("myiframe").style.display="inline";
@@ -448,7 +448,7 @@ function saveuser()
 
 function login_to_server()
 	{
-	url = "http://mltaxi.ge/login.php?login=1&unique=" + myid + "&myuser=" + MyUser + "&mypass=" + MyPass;
+	url = "http://mltaxi.ge/login.php?login=1&unique=" + myid + "&myuser=" + MyUser + "&mypass=" + MyPass+"&version="+app_version;
     console.log("login: " + url);
     gamehttp.open('GET', url, true);
     gamehttp.send(null);
@@ -577,11 +577,11 @@ function call_taxi()
 
         if (MyUser !== "nouser" && MyUser !== "") 
 			{
-            url = "http://mltaxi.ge/call.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&class="+call_class+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str+"&thirdlat=" + third_lat + "&thirdlng=" + third_lng+"&third_str="+third_str+"&varaudi="+appr_price;
+            url = "http://mltaxi.ge/call.php?uname=" + MyUser + "&pass=" + MyPass + "&lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&class="+call_class+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str+"&thirdlat=" + third_lat + "&thirdlng=" + third_lng+"&third_str="+third_str+"&varaudi="+appr_price+"&version="+app_version;
 			}
         else 
 			{
-            url = "http://mltaxi.ge/call.php?lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&class="+call_class+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str+"&thirdlat=" + third_lat + "&thirdlng=" + third_lng+"&third_str="+third_str+"&varaudi="+appr_price;
+            url = "http://mltaxi.ge/call.php?lat=" + start_lat + "&long=" + start_lng + "&unique=" + myid + "&tel=" + mytel+"&class="+call_class+"&endlat=" + end_lat + "&endlong=" + end_lng+"&start_str="+start_str+"&end_str="+end_str+"&thirdlat=" + third_lat + "&thirdlng=" + third_lng+"&third_str="+third_str+"&varaudi="+appr_price+"&version="+app_version;
 			}
         callingtaxi = 1;
         console.log("taxi call: " + url);
