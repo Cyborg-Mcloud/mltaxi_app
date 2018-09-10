@@ -1,3 +1,5 @@
+var app_version=160;
+
 var mystatus = 0;
 
 document.addEventListener("deviceready", onDeviceReady, false);
